@@ -1,0 +1,17 @@
+# Keep only these files
+!.gitignore
+!index.html
+!README.md
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp
+*~
+
+# Editor directories
+.vscode/
+.idea/
