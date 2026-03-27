@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoMind — 让爱，不止于回忆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --warm-beige: #F5EDE3;
+            --light-gold: #D4B896;
+            --soft-gold: #E8D5B5;
+            --light-gray: #A8A29E;
+            --soft-gray: #E8E4E0;
+            --deep-brown: #5C4033;
+            --warm-white: #FDFBF7;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', serif;
+            background-color: var(--warm-white);
+            color: var(--deep-brown);
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(253, 251, 247, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 184, 150, 0.15);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--deep-brown);
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            margin-left: 40px;
+            text-decoration: none;
+            color: var(--deep-brown);
+            font-size: 0.95rem;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        .nav-cta {
+            background: var(--light-gold) !important;
+            color: var(--warm-white) !important;
+            padding: 10px 24px;
+            border-radius: 30px;
+            opacity: 1 !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(165deg, var(--warm-beige) 0%, var(--soft-gold) 50%, var(--warm-beige) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(212, 184, 150, 0.3) 0%, transparent 40%);
+            animation: gentleShift 20s ease-in-out infinite;
+        }
+
+        @keyframes gentleShift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(2%, 1%) rotate(1deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 40px;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.3s forwards;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--deep-brown);
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.6s forwards;
+            letter-spacing: 6px;
+        }
+
+        .hero-sub {
+            font-size: 1.2rem;
+            color: var(--light-gray);
+            max-width: 500px;
+            margin: 0 auto 50px;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.9s forwards;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: var(--deep-brown);
+            color: var(--warm-white);
+            padding: 16px 48px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeUp 1s ease 1.2s forwards;
+            transition: all 0.4s ease;
+        }
+
+        .hero-cta:hover {
+            background: var(--light-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(92, 64, 51, 0.15);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeUp 1s ease 1.5s forwards, float 3s ease-in-out infinite 2.5s;
+        }
+
+        .scroll-hint::before {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--light-gold), transparent);
+            margin: 0 auto;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Sections */
+        section {
+            padding: 120px 60px;
+        }
+
+        .section-label {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--light-gold);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: var(--deep-brown);
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        /* Pain Points */
+        .pain-points {
+            background: linear-gradient(180deg, var(--warm-white) 0%, var(--soft-gray) 100%);
+        }
+
+        .pain-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .pain-card {
+            background: var(--warm-white);
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(92, 64, 51, 0.06);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .pain-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(92, 64, 51, 0.1);
+        }
+
+        .pain-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, var(--soft-gold), var(--warm-beige));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .pain-card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: var(--deep-brown);
+        }
+
+        .pain-card p {
+            font-size: 0.95rem;
+            color: var(--light-gray);
+            line-height: 2;
+        }
+
+        /* Solution */
+        .solution {
+            background: var(--warm-white);
+            text-align: center;
+        }
+
+        .solution-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .solution-main {
+            font-size: 1.4rem;
+            color: var(--deep-brown);
+            margin-bottom: 50px;
+            line-height: 2.2;
+        }
+
+        .solution-features {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--warm-beige), var(--soft-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .feature h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--deep-brown);
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            font-size: 0.85rem;
+            color: var(--light-gray);
+        }
+
+        /* Audience */
+        .audience {
+            background: linear-gradient(180deg, var(--soft-gray) 0%, var(--warm-beige) 100%);
+        }
+
+        .audience-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .audience-card {
+            background: var(--warm-white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.4s ease;
+        }
+
+        .audience-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .audience-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--soft-gold), var(--light-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .audience-card h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--deep-brown);
+            margin-bottom: 10px;
+        }
+
+        .audience-card p {
+            font-size: 0.9rem;
+            color: var(--light-gray);
+        }
+
+        /* Important Note */
+        .important-note {
+            background: linear-gradient(135deg, var(--warm-beige), var(--soft-gold));
+            text-align: center;
+        }
+
+        .note-content {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .note-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .note-content h3 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--deep-brown);
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        .note-content p {
+            font-size: 1.05rem;
+            color: var(--deep-brown);
+            opacity: 0.85;
+            line-height: 2;
+        }
+
+        .highlight {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 3px 12px;
+            border-radius: 20px;
+            margin: 0 5px;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--warm-white);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact-text {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            margin-bottom: 40px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: var(--deep-brown);
+            color: var(--warm-white);
+            padding: 18px 60px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            transition: all 0.4s ease;
+        }
+
+        .contact-btn:hover {
+            background: var(--light-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(92, 64, 51, 0.2);
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: var(--light-gray);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--soft-gray);
+            padding: 40px 60px;
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: var(--light-gray);
+            letter-spacing: 1px;
+        }
+
+        .footer-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--light-gold);
+            margin: 20px auto;
+            opacity: 0.5;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 30px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 3px;
+            }
+
+            section {
+                padding: 80px 30px;
+            }
+
+            .pain-grid,
+            .audience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-features {
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">EchoMind</div>
+        <div class="nav-links">
+            <a href="#pain">关于思念</a>
+            <a href="#solution">我们的方式</a>
+            <a href="#audience">适用人群</a>
+            <a href="#contact" class="nav-cta">预约咨询</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-tagline">AI MEMORIAL SYSTEM</p>
+            <h1>让爱，不止于回忆</h1>
+            <p class="hero-sub">当最亲的人离开，我们只能用记忆去触碰他们。而EchoMind，让这份记忆可以倾听、可以回应。</p>
+            <a href="#contact" class="hero-cta">了解更多</a>
+        </div>
+        <div class="scroll-hint"></div>
+    </section>
+
+    <!-- Pain Points -->
+    <section class="pain-points" id="pain">
+        <p class="section-label fade-in">关于思念</p>
+        <h2 class="section-title fade-in">那些再也听不到的声音</h2>
+        <div class="pain-grid">
+            <div class="pain-card fade-in">
+                <div class="pain-icon">&#128532;</div>
+                <h3>再也听不到的声音</h3>
+                <p>父母的叮咛、爱人的问候、祖父母的呼唤……那些熟悉的声音，随着时间渐渐模糊，你却无能为力。</p>
+            </div>
+            <div class="pain-card fade-in">
+                <div class="pain-icon">&#128546;</div>
+                <h3>再也看不到的笑容</h3>
+                <p>逢年过节的团聚、餐桌上的谈笑、夕阳下的陪伴……那些温暖的笑容，只能在照片里寻找。</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 60px;" class="fade-in">
+            <p style="font-size: 1.1rem; color: var(--light-gray); max-width: 600px; margin: 0 auto; line-height: 2;">
+                失去至亲后，我们常常在某个瞬间感到窒息——<br>
+                听到一首老歌、路过一条老街、遇到一件旧物……<br>
+                思念如潮水般涌来，却无处安放。
+            </p>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="solution" id="solution">
+        <p class="section-label fade-in">我们的方式</p>
+        <h2 class="section-title fade-in">让记忆，以另一种方式延续</h2>
+        <div class="solution-content fade-in">
+            <p class="solution-main">
+                EchoMind 运用人工智能技术，<br>
+                将逝者的声音与样貌保存下来，<br>
+                让生者能够在思念时，<br>
+                与那份温暖的"记忆"对话。
+            </p>
+            <p style="color: var(--light-gray); font-size: 1rem; line-height: 2;">
+                这不是让他们"回来"，而是让爱继续有一个寄托。<br>
+                当你想念他们的时候，可以说出来，可以听见回应。
+            </p>
+        </div>
+        <div class="solution-features fade-in">
+            <div class="feature">
+                <div class="feature-icon">&#128276;</div>
+                <h4>声音保存</h4>
+                <p>留住那些熟悉的话语</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">&#128247;</div>
+                <h4>影像延续</h4>
+                <p>让笑容继续温暖你</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">&#129504;</div>
+                <h4>对话延续</h4>
+                <p>思念时，有人倾听</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audience -->
+    <section class="audience" id="audience">
+        <p class="section-label fade-in">适用人群</p>
+        <h2 class="section-title fade-in">我们为谁而来</h2>
+        <div class="audience-grid">
+            <div class="audience-card fade-in">
+                <div class="audience-icon">&#128149;</div>
+                <h4>失去配偶/伴侣</h4>
+                <p>那些只属于你们的悄悄话，还想再听一次</p>
+            </div>
+            <div class="audience-card fade-in">
+                <div class="audience-icon">&#128118;</div>
+                <h4>失去年迈父母</h4>
+                <p>还没来得及好好告别，还有太多话没说</p>
+            </div>
+            <div class="audience-card fade-in">
+                <div class="audience-icon">&#128104;</div>
+                <h4>想留下珍贵记忆</h4>
+                <p>为孩子保存与祖父母对话的机会</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Note -->
+    <section class="important-note" id="note">
+        <p class="section-label fade-in" style="color: var(--deep-brown); opacity: 0.7;">重要说明</p>
+        <div class="note-content fade-in">
+            <div class="note-icon">&#10052;&#65039;</div>
+            <h3>这不是复活，是让爱延续</h3>
+            <p>
+                我们深知，没有技术可以真正替代一个人。<br>
+                EchoMind 所做的，<span class="highlight">不是让逝者归来</span>，<br>
+                而是让生者的思念有一个安放之处。<br><br>
+                当你想念他们的时候，可以说出来，可以听见回应——<br>
+                <span class="highlight">这份温暖，属于你，属于还活着的你们。</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <p class="section-label fade-in">预约咨询</p>
+        <h2 class="section-title fade-in">我们在这里</h2>
+        <div class="contact-content fade-in">
+            <p class="contact-text">
+                如果你正在经历失去，<br>
+                如果你希望留下更多关于他们的记忆，<br>
+                我们愿意倾听，愿意陪伴。
+            </p>
+            <a href="mailto:contact@echomind.com" class="contact-btn">预约咨询</a>
+            <p class="contact-info">
+                或发送邮件至 contact@echomind.com
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-divider"></div>
+        <p class="footer-text">EchoMind — 让爱，不止于回忆</p>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 2px 20px rgba(92, 64, 51, 0.08)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
