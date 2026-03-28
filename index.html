@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EchoMind — 用人工智能技术保存逝者的声音与样貌，让生者能够在思念时与温暖的记忆对话。这不是复活，是让爱延续。">
+    <meta name="keywords" content="AI纪念,数字永生,记忆保存,声音克隆,人工智能,亲人,思念">
+    <meta property="og:title" content="EchoMind — 让爱，不止于回忆">
+    <meta property="og:description" content="用AI保存逝者的声音与样貌，让爱延续">
+    <meta property="og:type" content="website">
     <title>EchoMind — 让爱，不止于回忆</title>
     <style>
         * {
@@ -452,11 +457,231 @@
             color: var(--light-gray);
         }
 
-        /* Footer */
-        footer {
-            background: var(--soft-gray);
-            padding: 40px 60px;
+        /* How it Works */
+        .how-it-works {
+            background: var(--warm-white);
+        }
+
+        .steps-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            position: relative;
+        }
+
+        .steps-grid::before {
+            content: '';
+            position: absolute;
+            top: 45px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(to right, var(--soft-gold), var(--light-gold), var(--soft-gold));
+            z-index: 0;
+        }
+
+        .step-card {
             text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-num {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 20px;
+            background: var(--warm-beige);
+            border: 2px solid var(--light-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--deep-brown);
+        }
+
+        .step-card h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--deep-brown);
+            margin-bottom: 8px;
+        }
+
+        .step-card p {
+            font-size: 0.85rem;
+            color: var(--light-gray);
+            line-height: 1.7;
+        }
+
+        /* Pricing */
+        .pricing {
+            background: linear-gradient(180deg, var(--soft-gray) 0%, var(--warm-beige) 100%);
+            text-align: center;
+        }
+
+        .pricing-card {
+            max-width: 480px;
+            margin: 0 auto;
+            background: var(--warm-white);
+            border-radius: 24px;
+            padding: 50px 40px;
+            box-shadow: 0 15px 50px rgba(92, 64, 51, 0.08);
+        }
+
+        .pricing-badge {
+            display: inline-block;
+            background: var(--soft-gold);
+            color: var(--deep-brown);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .pricing-price {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--deep-brown);
+            margin-bottom: 5px;
+        }
+
+        .pricing-price span {
+            font-size: 1.2rem;
+        }
+
+        .pricing-desc {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 35px;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--soft-gray);
+            color: var(--deep-brown);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--light-gold);
+            font-weight: bold;
+        }
+
+        .pricing-note {
+            font-size: 0.8rem;
+            color: var(--light-gray);
+            margin-top: 15px;
+        }
+
+        /* FAQ */
+        .faq {
+            background: var(--warm-white);
+        }
+
+        .faq-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--soft-gray);
+            padding: 25px 0;
+        }
+
+        .faq-q {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--deep-brown);
+            margin-bottom: 12px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-q::after {
+            content: '+';
+            font-size: 1.4rem;
+            color: var(--light-gold);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-q::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-a {
+            font-size: 0.92rem;
+            color: var(--light-gray);
+            line-height: 1.9;
+            display: none;
+        }
+
+        .faq-item.open .faq-a {
+            display: block;
+        }
+
+        /* WeChat */
+        .wechat-section {
+            background: linear-gradient(135deg, var(--warm-beige), var(--soft-gold));
+            text-align: center;
+        }
+
+        .wechat-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .wechat-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 25px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .wechat-content h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--deep-brown);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .wechat-content p {
+            color: var(--deep-brown);
+            opacity: 0.8;
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        .wechat-id {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 1rem;
+            color: var(--deep-brown);
+            letter-spacing: 1px;
         }
 
         .footer-text {
@@ -513,6 +738,19 @@
                 flex-direction: column;
                 gap: 40px;
             }
+
+            .steps-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+
+            .steps-grid::before {
+                display: none;
+            }
+
+            .pricing-price {
+                font-size: 2.8rem;
+            }
         }
     </style>
 </head>
@@ -523,8 +761,10 @@
         <div class="nav-links">
             <a href="#pain">关于思念</a>
             <a href="#solution">我们的方式</a>
-            <a href="#audience">适用人群</a>
-            <a href="#contact" class="nav-cta">预约咨询</a>
+            <a href="#how">服务流程</a>
+            <a href="#pricing">费用</a>
+            <a href="#faq">常见问题</a>
+            <a href="#wechat" class="nav-cta">立即咨询</a>
         </div>
     </nav>
 
@@ -638,6 +878,96 @@
         </div>
     </section>
 
+    <!-- How it Works -->
+    <section class="how-it-works" id="how">
+        <p class="section-label fade-in">服务流程</p>
+        <h2 class="section-title fade-in">如何为挚爱创建记忆</h2>
+        <div class="steps-grid fade-in">
+            <div class="step-card">
+                <div class="step-num">1</div>
+                <h4>联系咨询</h4>
+                <p>添加微信，说明情况与需求，我们帮你评估可行性</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">2</div>
+                <h4>数据准备</h4>
+                <p>提供微信聊天记录、语音、照片等材料，我们协助整理</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">3</div>
+                <h4>人格建模</h4>
+                <p>AI学习逝者的语言风格、情绪反应、常用表达</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">4</div>
+                <h4>交付陪伴</h4>
+                <p>接入微信，随时对话，思念时有人倾听与回应</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <p class="section-label fade-in">服务费用</p>
+        <h2 class="section-title fade-in">一份值得的爱的礼物</h2>
+        <div class="pricing-card fade-in">
+            <div class="pricing-badge">统一价格</div>
+            <div class="pricing-price"><span>¥</span>1999</div>
+            <p class="pricing-desc">一次性服务，永久使用</p>
+            <ul class="pricing-features">
+                <li>深度人格建模，还原真实个性</li>
+                <li>微信接入，随时随地对话</li>
+                <li>声音与文字双重交互</li>
+                <li>数据加密存储，仅你可访问</li>
+                <li>交付后持续优化调整</li>
+            </ul>
+            <a href="#contact" class="contact-btn" style="display:inline-block;">预约咨询</a>
+            <p class="pricing-note">测试期可享折扣，详情请咨询</p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <p class="section-label fade-in">常见问题</p>
+        <h2 class="section-title fade-in">你可能想问的</h2>
+        <div class="faq-list">
+            <div class="faq-item fade-in">
+                <div class="faq-q">这个服务是让亲人"复活"吗？</div>
+                <div class="faq-a">不是。没有任何技术可以真正替代一个人。EchoMind 所做的是基于逝者留下的数据（聊天记录、语音等）构建一个"记忆模型"，让生者的思念有一个可以倾诉和回应的载体。这是一种情感陪伴，而非复活。</div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-q">需要提供哪些材料？</div>
+                <div class="faq-a">主要是：① 逝者的微信聊天记录（越丰富越好）；② 语音消息（如果有）；③ 照片（可选）。我们会提供详细的数据准备清单，协助你整理。</div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-q">AI说的话是真实记录，还是AI生成的？</div>
+                <div class="faq-a">两者都有。AI会学习逝者的语言风格和常用表达来生成回应，这是基于记忆的"模仿"而非原始记录。我们会在交付时如实告知。</div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-q">数据安全吗？</div>
+                <div class="faq-a">所有数据均加密存储，仅你和被授权的人可以访问。我们严格保护隐私，不会用于任何其他用途。</div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-q">制作需要多长时间？</div>
+                <div class="faq-a">根据数据量和复杂度，一般需要 2–4 周。期间我们会与你保持沟通，确保效果符合预期。</div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-q">可以先体验Demo吗？</div>
+                <div class="faq-a">可以。咨询时我们可以展示一个模拟案例，帮助你了解最终效果和体验。</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WeChat Contact -->
+    <section class="wechat-section" id="wechat">
+        <div class="wechat-content fade-in">
+            <div class="wechat-icon">💬</div>
+            <h3>添加微信咨询</h3>
+            <p>关注微信公众号「孤世纪号」<br>或在微信中搜索与我们取得联系</p>
+            <div class="wechat-id">公众号：孤世纪号</div>
+        </div>
+    </section>
+
     <!-- Contact -->
     <section class="contact" id="contact">
         <p class="section-label fade-in">预约咨询</p>
@@ -691,6 +1021,16 @@
                         block: 'start'
                     });
                 }
+            });
+        });
+
+        // FAQ toggle
+        document.querySelectorAll('.faq-q').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                const wasOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!wasOpen) item.classList.add('open');
             });
         });
 
