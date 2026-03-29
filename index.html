@@ -41,12 +41,13 @@
         nav {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
             padding: 20px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(253, 251, 247, 0.92);
+            background: rgba(253, 251, 247, 0.98);
             backdrop-filter: blur(12px);
             z-index: 1000;
             border-bottom: 1px solid rgba(212, 184, 150, 0.15);
@@ -1409,6 +1410,10 @@
             if (painCards[1]) painCards[1].textContent = t['pain2-title'];
             if (painDescs[0]) painDescs[0].textContent = t['pain1-desc'];
             if (painDescs[1]) painDescs[1].textContent = t['pain2-desc'];
+
+            // Pain quote
+            const painQuotes = document.querySelectorAll('#pain .fade-in p');
+            if (painQuotes[0]) painQuotes[0].innerHTML = t['pain-quote'].replace(/\n/g, '<br>');
 
             // Solution
             if (document.querySelector('.solution .section-label')) document.querySelector('.solution .section-label').textContent = t['solution-label'];
