@@ -52,6 +52,7 @@
             border-bottom: 1px solid rgba(212, 184, 150, 0.15);
         }
 
+        .logo-img { height: 40px; }
         .logo {
             font-size: 1.5rem;
             font-weight: 600;
@@ -581,6 +582,7 @@
             font-weight: bold;
         }
 
+        .price-red { color: #dc3545; font-weight: bold; }
         .pricing-note {
             font-size: 0.8rem;
             color: var(--light-gray);
@@ -684,6 +686,38 @@
             letter-spacing: 1px;
         }
 
+        /* QR Codes Container */
+        .qr-codes-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .qr-code-item {
+            text-align: center;
+        }
+
+        .qr-code-item img {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .qr-code-item p {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--deep-brown);
+        }
+
+        .pricing-footnote {
+            color: var(--light-gray);
+            font-size: 0.85rem;
+            margin-top: 20px;
+        }
+
         .footer-text {
             font-size: 0.85rem;
             color: var(--light-gray);
@@ -757,14 +791,14 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="logo">EchoMind</div>
+        <img src="logo.png" alt="EchoMind" class="logo-img">
         <div class="nav-links">
             <a href="#pain">关于思念</a>
             <a href="#solution">我们的方式</a>
             <a href="#how">服务流程</a>
             <a href="#pricing">费用</a>
             <a href="#faq">常见问题</a>
-            <a href="#wechat" class="nav-cta">立即咨询</a>
+            <a href="#contact" class="nav-cta">立即咨询</a>
         </div>
     </nav>
 
@@ -774,7 +808,7 @@
             <p class="hero-tagline">AI MEMORIAL SYSTEM</p>
             <h1>让爱，不止于回忆</h1>
             <p class="hero-sub">当最亲的人离开，我们只能用记忆去触碰他们。而EchoMind，让这份记忆可以倾听、可以回应。</p>
-            <a href="#contact" class="hero-cta">了解更多</a>
+            <a href="#pain" class="hero-cta">了解更多</a>
         </div>
         <div class="scroll-hint"></div>
     </section>
@@ -912,8 +946,8 @@
         <h2 class="section-title fade-in">一份值得的爱的礼物</h2>
         <div class="pricing-card fade-in">
             <div class="pricing-badge">统一价格</div>
-            <div class="pricing-price"><span>¥</span>1999</div>
-            <p class="pricing-desc">一次性服务，永久使用</p>
+            <div class="pricing-price"><span>¥</span><s>1999</s> <span class="price-red">方案限时公益价 ¥0*</span></div>
+            
             <ul class="pricing-features">
                 <li>深度人格建模，还原真实个性</li>
                 <li>微信接入，随时随地对话</li>
@@ -921,8 +955,7 @@
                 <li>数据加密存储，仅你可访问</li>
                 <li>交付后持续优化调整</li>
             </ul>
-            <a href="#contact" class="contact-btn" style="display:inline-block;">预约咨询</a>
-            <p class="pricing-note">测试期可享折扣，详情请咨询</p>
+            
         </div>
     </section>
 
@@ -952,36 +985,32 @@
                 <div class="faq-a">根据数据量和复杂度，一般需要 2–4 周。期间我们会与你保持沟通，确保效果符合预期。</div>
             </div>
             <div class="faq-item fade-in">
-                <div class="faq-q">可以先体验Demo吗？</div>
-                <div class="faq-a">可以。咨询时我们可以展示一个模拟案例，帮助你了解最终效果和体验。</div>
-            </div>
-        </div>
     </section>
 
-    <!-- WeChat Contact -->
+    <!-- 咨询联系 -->
     <section class="wechat-section" id="wechat">
-        <div class="wechat-content fade-in">
-            <div class="wechat-icon">💬</div>
-            <h3>添加微信咨询</h3>
-            <p>关注微信公众号「EchoMind回声」<br>或在微信中搜索与我们取得联系</p>
-            <div class="wechat-id">公众号：EchoMind回声</div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact" id="contact">
         <p class="section-label fade-in">预约咨询</p>
         <h2 class="section-title fade-in">我们在这里</h2>
-        <div class="contact-content fade-in">
+        <div class="wechat-content fade-in">
+            <div class="qr-codes-container">
+                <div class="qr-code-item">
+                    <img src="wechat-qrcode.jpg" alt="微信公众号二维码">
+                    <p>公众号：EchoMind回声</p>
+                </div>
+                <div class="qr-code-item">
+                    <img src="wechat-qrcode-new.jpg" alt="个人微信二维码">
+                    <p>个人微信</p>
+                </div>
+            </div>
             <p class="contact-text">
                 如果你正在经历失去，<br>
                 如果你希望留下更多关于他们的记忆，<br>
                 我们愿意倾听，愿意陪伴。
             </p>
-            <a href="mailto:echomind2026@163.com" class="contact-btn">预约咨询</a>
             <p class="contact-info">
                 或发送邮件至 echomind2026@163.com
             </p>
+            <p class="pricing-footnote">* 如需硬件费用按成本价收取、模型流量费用需自行购买</p>
         </div>
     </section>
 
