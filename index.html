@@ -60,6 +60,49 @@
             letter-spacing: 2px;
         }
 
+        /* Language Selector */
+        .lang-selector {
+            position: relative;
+            display: inline-block;
+            margin-right: 20px;
+        }
+        .lang-selector button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .lang-selector button:hover {
+            background: rgba(212, 184, 150, 0.2);
+        }
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--warm-white);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            overflow: hidden;
+            z-index: 1001;
+        }
+        .lang-dropdown.show {
+            display: block;
+        }
+        .lang-dropdown a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: var(--deep-brown);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        .lang-dropdown a:hover {
+            background: var(--soft-gray);
+        }
         .nav-links a {
             margin-left: 40px;
             text-decoration: none;
@@ -802,6 +845,14 @@
     <!-- Navigation -->
     <nav>
         <img src="logo.jpg" alt="EchoMind" class="logo-img">
+        <div class="lang-selector">
+            <button onclick="toggleLang()" aria-label="Language">🌐</button>
+            <div class="lang-dropdown" id="langDropdown">
+                <a href="#" onclick="setLang('zh-CN')">简体中文</a>
+                <a href="#" onclick="setLang('zh-TW')">繁體中文</a>
+                <a href="#" onclick="setLang('en')">English</a>
+            </div>
+        </div>
         <div class="nav-links">
             <a href="#pain">关于思念</a>
             <a href="#solution">我们的方式</a>
@@ -1087,6 +1138,375 @@
                 nav.style.boxShadow = 'none';
             }
         });
+// Language Selector
+        function toggleLang() {
+            document.getElementById('langDropdown').classList.toggle('show');
+        }
+        document.addEventListener('click', (e) => {
+            if (!e.target.matches('.lang-selector button') && !e.target.closest('.lang-selector')) {
+                document.getElementById('langDropdown').classList.remove('show');
+            }
+        });
+
+        const translations = {
+            'zh-CN': {},
+            'zh-TW': {},
+            'en': {}
+        };
+
+        // Simplified Chinese translations
+        translations['zh-CN'] = {
+            'nav-1': '关于思念',
+            'nav-2': '我们的方式',
+            'nav-3': '服务流程',
+            'nav-4': '费用',
+            'nav-5': '常见问题',
+            'nav-cta': '立即咨询',
+            'hero-title': '让爱，不止于回忆',
+            'hero-sub': '当最亲的人离开，我们只能用记忆去触碰他们。而EchoMind，让这份记忆可以倾听、可以回应。',
+            'hero-cta': '了解更多',
+            'pain-label': '关于思念',
+            'pain-title': '那些再也听不到的声音',
+            'pain1-title': '再也听不到的声音',
+            'pain1-desc': '父母的叮咛、爱人的问候、祖父母的呼唤……那些熟悉的声音，随着时间渐渐模糊，你却无能为力。',
+            'pain2-title': '再也收不到的回应',
+            'pain2-desc': '信息里的关心、餐桌上的谈笑、夕阳下的陪伴……那些温暖的言语，只能在曾经的聊天记录里翻看。',
+            'pain-quote': '失去至亲后，我们常常在某个瞬间感到窒息——\n听到一首老歌、路过一条老街、遇到一件旧物……\n思念如潮水般涌来，却无处安放。',
+            'solution-label': '我们的方式',
+            'solution-title': '让记忆，以另一种方式延续',
+            'solution-main': 'EchoMind 运用人工智能技术，将逝者的声音与聊天风格留存下来，让生者能够在思念时，与那份温暖的"记忆"对话、互动。',
+            'solution-note': '这不是让他们"回来"，而是让爱继续有一个寄托。当你想念他们的时候，可以写出来说出来，可以收到可以听见可以回应。',
+            'feature1-title': '对话延续',
+            'feature1-desc': '让声音继续陪伴你',
+            'feature2-title': '风格延续',
+            'feature2-desc': '让关心继续温暖你',
+            'feature3-title': '情感陪伴',
+            'feature3-desc': '让思念有处可栖',
+            'audience-label': '适用人群',
+            'audience-title': '我们为谁而来',
+            'aud1-title': '失去父母/长辈',
+            'aud1-desc': '那些还没来得及说的爱，还想再听一次回应',
+            'aud2-title': '失去配偶/伴侣',
+            'aud2-desc': '那些只属于你们的悄悄话，还想再一起说一次',
+            'aud3-title': '失去子女',
+            'aud3-desc': '孩子的声音、笑容、成长记录，都想永远保存',
+            'note-label': '重要说明',
+            'note-text': 'EchoMind 不是复活，不是AI替身，而是一个基于真实数据的记忆模型。它无法替代任何人，但可以成为你思念时的寄托。',
+            'how-label': '服务流程',
+            'how-title': '如何为挚爱创建记忆',
+            'step1-title': '数据收集',
+            'step1-desc': '你提供逝者的微信聊天记录、语音消息等素材',
+            'step2-title': '建模训练',
+            'step2-desc': '我们运用AI技术构建人格与对话风格模型',
+            'step3-title': '接入使用',
+            'step3-desc': '通过微信接入，随时随地与"记忆"对话',
+            'pricing-label': '服务费用',
+            'pricing-title': '一份值得的爱的礼物',
+            'pricing-badge': '统一价格',
+            'pricing-price': '方案限时公益价 ¥0*',
+            'pricing-features': ['深度人格建模，还原真实个性', '微信接入，随时随地对话', '声音与文字双重交互', '数据加密存储，仅你可访问', '交付后持续优化调整'],
+            'pricing-footnote': '* 如需硬件费用按成本价收取、模型流量费用需自行购买',
+            'faq-label': '常见问题',
+            'faq-title': '你可能想问的',
+            'faq1-q': '这个服务是让亲人"复活"吗？',
+            'faq1-a': '不是。没有任何技术可以真正替代一个人。EchoMind 所做的是基于逝者留下的数据（聊天记录、语音等）构建一个"记忆模型"，让生者的思念有一个可以倾诉和回应的载体。这是一种情感陪伴，而非复活。',
+            'faq2-q': '需要提供哪些材料？',
+            'faq2-a': '主要是：① 逝者的微信聊天记录（越丰富越好）；② 语音消息（如果有）；③ 照片（可选）。我们会提供详细的数据准备清单，协助你整理。',
+            'faq3-q': 'AI说的话是真实记录，还是AI生成的？',
+            'faq3-a': '两者都有。AI会学习逝者的语言风格和常用表达来生成回应，这是基于记忆的"模仿"而非原始记录。我们会在交付时如实告知。',
+            'faq4-q': '数据安全吗？',
+            'faq4-a': '所有数据均加密存储，仅你和被授权的人可以访问。我们严格保护隐私，不会用于任何其他用途。',
+            'faq5-q': '制作需要多长时间？',
+            'faq5-a': '根据数据量和复杂度，一般需要 2–4 周。期间我们会与你保持沟通，确保效果符合预期。',
+            'contact-label': '预约咨询',
+            'contact-title': '我们在这里',
+            'contact-text': '如果你正在经历失去，如果你希望留下更多关于他们的记忆，我们愿意倾听，愿意陪伴。',
+            'contact-email': '或发送邮件至 echomind2026@163.com',
+            'qr-public': '公众号：EchoMind',
+            'qr-personal': '个人微信',
+            'qr-website': '访问网站',
+            'footer': 'EchoMind — 让爱，不止于回忆'
+        };
+
+        // Traditional Chinese translations
+        translations['zh-TW'] = {
+            'nav-1': '關於思念',
+            'nav-2': '我們的方式',
+            'nav-3': '服務流程',
+            'nav-4': '費用',
+            'nav-5': '常見問題',
+            'nav-cta': '立即諮詢',
+            'hero-title': '讓愛，不止於回憶',
+            'hero-sub': '當最親的人離開，我們只能用記憶去觸碰他們。而EchoMind，讓這份記憶可以傾聽、可以回應。',
+            'hero-cta': '了解更多',
+            'pain-label': '關於思念',
+            'pain-title': '那些再也聽不到的聲音',
+            'pain1-title': '再也聽不到的聲音',
+            'pain1-desc': '父母的叮嚀、愛人的問候、祖父母的呼喚……那些熟悉的聲音，隨著時間漸漸模糊，你卻無能為力。',
+            'pain2-title': '再也收不到的回應',
+            'pain2-desc': '信息裡的關心、餐桌上的談笑、夕陽下的陪伴……那些溫暖的言語，只能在曾經的聊天記錄裡翻看。',
+            'pain-quote': '失去至親後，我們常常在某個瞬間感到窒息——\n聽到一首老歌、路過一條老街、遇到一件舊物……\n思念如潮水般湧來，卻無處安放。',
+            'solution-label': '我們的方式',
+            'solution-title': '讓記憶，以另一種方式延續',
+            'solution-main': 'EchoMind 運用人工智慧技術，將逝者的聲音與聊天風格留存下來，讓生者能夠在思念時，與那份溫暖的"記憶"對話、互動。',
+            'solution-note': '這不是讓他們"回來"，而是讓愛繼續有一個寄託。當你想念他們的時候，可以寫出來說出來，可以收到可以聽見可以回應。',
+            'feature1-title': '對話延續',
+            'feature1-desc': '讓子聲繼續陪伴你',
+            'feature2-title': '風格延續',
+            'feature2-desc': '讓關心繼續溫暖你',
+            'feature3-title': '情感陪伴',
+            'feature3-desc': '讓思念有處可棲',
+            'audience-label': '適用人群',
+            'audience-title': '我們為誰而來',
+            'aud1-title': '失去父母/長輩',
+            'aud1-desc': '那些還沒來得及說的愛，還想再聽一次回應',
+            'aud2-title': '失去配偶/伴侶',
+            'aud2-desc': '那些只屬於你們的悄悄話，還想再一起說一次',
+            'aud3-title': '失去子女',
+            'aud3-desc': '孩子的聲音、笑容、成長記錄，都想永遠保存',
+            'note-label': '重要說明',
+            'note-text': 'EchoMind 不是復活，不是AI替身，而是一個基於真實數據的記憶模型。它無法替代任何人，但可以成為你思念時的寄託。',
+            'how-label': '服務流程',
+            'how-title': '如何為摯愛創建記憶',
+            'step1-title': '數據收集',
+            'step1-desc': '你提供逝者的微信聊天記錄、語音消息等素材',
+            'step2-title': '建模訓練',
+            'step2-desc': '我們運用AI技術構建人格與對話風格模型',
+            'step3-title': '接入使用',
+            'step3-desc': '通過微信接入，隨時隨地與"記憶"對話',
+            'pricing-label': '服務費用',
+            'pricing-title': '一份值得的愛的禮物',
+            'pricing-badge': '統一價格',
+            'pricing-price': '方案限時公益價 ¥0*',
+            'pricing-features': ['深度人格建模，還原真實個性', '微信接入，隨時隨地對話', '聲音與文字雙重交互', '數據加密存儲，僅你可訪問', '交付後持續優化調整'],
+            'pricing-footnote': '* 如需硬件費用按成本價收取、模型流量費用需自行購買',
+            'faq-label': '常見問題',
+            'faq-title': '你可能想問的',
+            'faq1-q': '這個服務是讓親人"復活"嗎？',
+            'faq1-a': '不是。沒有任何技術可以真正替代一個人。EchoMind 所做的是基於逝者留下的數據（聊天記錄、語音等）構建一個"記憶模型"，讓生者的思念有一個可以傾訴和回應的載體。這是一種情感陪伴，而非復活。',
+            'faq2-q': '需要提供哪些材料？',
+            'faq2-a': '主要是：① 逝者的微信聊天記錄（越豐富越好）；② 語音消息（如果有）；③ 照片（可選）。我們會提供詳細的數據準備清單，協助你整理。',
+            'faq3-q': 'AI說的話是真實記錄，還是AI生成的？',
+            'faq3-a': '兩者都有。AI會學習逝者的語言風格和常用表達來生成回應，這是基於記憶的"模仿"而非原始記錄。我們會在交付時如實告知。',
+            'faq4-q': '數據安全嗎？',
+            'faq4-a': '所有數據均加密存儲，僅你和被授權的人可以訪問。我們嚴格保護隱私，不會用於任何其他用途。',
+            'faq5-q': '製作需要多長時間？',
+            'faq5-a': '根據數據量和複雜度，一般需要 2–4 週。期間我們會與你保持溝通，確保效果符合預期。',
+            'contact-label': '預約諮詢',
+            'contact-title': '我們在這裡',
+            'contact-text': '如果你正在經歷失去，如果你希望留下更多關於他們的記憶，我們願意傾聽，願意陪伴。',
+            'contact-email': '或發送郵件至 echomind2026@163.com',
+            'qr-public': '公眾號：EchoMind',
+            'qr-personal': '個人微信',
+            'qr-website': '訪問網站',
+            'footer': 'EchoMind — 讓愛，不止於回憶'
+        };
+
+        // English translations
+        translations['en'] = {
+            'nav-1': 'About Loss',
+            'nav-2': 'Our Approach',
+            'nav-3': 'Process',
+            'nav-4': 'Pricing',
+            'nav-5': 'FAQ',
+            'nav-cta': 'Contact',
+            'hero-title': "Keeping Love Alive Beyond Memories",
+            'hero-sub': "When the closest ones leave, we can only reach them through memories. EchoMind allows these memories to listen, to respond.",
+            'hero-cta': 'Learn More',
+            'pain-label': 'About Loss',
+            'pain-title': 'Voices We Can No Longer Hear',
+            'pain1-title': 'Voices we can no longer hear',
+            'pain1-desc': "Parents' reminders, a partner's greetings, grandparents' calls... these familiar voices fade with time, leaving us helpless.",
+            'pain2-title': 'Responses we can no longer receive',
+            'pain2-desc': 'Care in messages, conversations at the dinner table, company under the sunset... all those warm words, now only found in old chat records.',
+            'pain-quote': "After losing a loved one, we often feel suffocated in certain moments— hearing an old song, passing an old street, encountering an old item... The longing comes like a tide, with nowhere to rest.",
+            'solution-label': 'Our Approach',
+            'solution-title': 'Preserving Memories in Another Form',
+            'solution-main': 'EchoMind uses AI technology to preserve the voice and chat style of the departed, allowing the living to converse and interact with those warm "memories" when they miss them.',
+            'solution-note': "This is not about bringing them \"back,\" but giving love a place to continue. When you miss them, you can write, speak, receive responses, hear, and reply.",
+            'feature1-title': 'Conversation Continues',
+            'feature1-desc': 'Let their voice keep you company',
+            'feature2-title': 'Style Preserved',
+            'feature2-desc': 'Let their care keep warming you',
+            'feature3-title': 'Emotional Companionship',
+            'feature3-desc': 'A place for your longing',
+            'audience-label': 'Who We Serve',
+            'audience-title': 'Who We Are Here For',
+            'aud1-title': 'Lost a Parent/Elder',
+            'aud1-desc': 'Words of love left unsaid, responses you wish you could hear one more time',
+            'aud2-title': 'Lost a Spouse/Partner',
+            'aud2-desc': 'Private words meant only for the two of you, conversations you wish you could share again',
+            'aud3-title': 'Lost a Child',
+            'aud3-desc': "Your child's voice, smile, and growth records— all worth preserving forever",
+            'note-label': 'Important Note',
+            'note-text': 'EchoMind is not resurrection, not an AI substitute. It is a memory model based on real data. It cannot replace anyone, but can become a place for your longing.',
+            'how-label': 'Our Process',
+            'how-title': 'How to Create Memories for Your Loved One',
+            'step1-title': 'Data Collection',
+            'step1-desc': "You provide WeChat chat records, voice messages, and other materials of the departed",
+            'step2-title': 'Model Training',
+            'step2-desc': 'We use AI technology to build personality and conversation style models',
+            'step3-title': 'Access & Usage',
+            'step3-desc': 'Connect via WeChat, chat with "memories" anytime, anywhere',
+            'pricing-label': 'Pricing',
+            'pricing-title': 'A Gift of Love Worth Giving',
+            'pricing-badge': 'Unified Price',
+            'pricing-price': 'Limited Charity Price ¥0*',
+            'pricing-features': ['Deep personality modeling, authentic personality recreation', 'WeChat access, chat anytime, anywhere', 'Voice and text dual interaction', 'Encrypted data storage, you only have access', 'Continuous optimization after delivery'],
+            'pricing-footnote': '* Hardware costs at cost price, model traffic fees must be purchased separately',
+            'faq-label': 'FAQ',
+            'faq-title': 'Questions You Might Ask',
+            'faq1-q': 'Is this service bringing my loved one "back to life"?',
+            'faq1-a': 'No. No technology can truly replace a person. EchoMind builds a "memory model" based on data left behind by the departed (chat records, voice messages, etc.), giving the living a vessel to pour out thoughts and receive responses. This is emotional companionship, not resurrection.',
+            'faq2-q': 'What materials do I need to provide?',
+            'faq2-a': 'Mainly: ① WeChat chat records of the departed (the more, the better); ② Voice messages (if available); ③ Photos (optional). We will provide a detailed data preparation checklist to help you organize.',
+            'faq3-q': "Are the AI's words real records or AI-generated?",
+            'faq3-a': 'Both. AI learns the conversation style and common expressions of the departed to generate responses. This is an "imitation" based on memory, not original records. We will honestly inform you upon delivery.',
+            'faq4-q': 'Is my data secure?',
+            'faq4-a': 'All data is encrypted and stored. Only you and authorized persons can access it. We strictly protect privacy and will not use it for any other purposes.',
+            'faq5-q': 'How long does the process take?',
+            'faq5-a': 'Generally 2-4 weeks depending on data volume and complexity. We will keep in touch with you during the process to ensure the result meets your expectations.',
+            'contact-label': 'Contact Us',
+            'contact-title': 'We Are Here',
+            'contact-text': 'If you are going through loss, if you wish to preserve more memories of them—we are willing to listen, willing to accompany.',
+            'contact-email': 'Or email echomind2026@163.com',
+            'qr-public': 'Official Account: EchoMind',
+            'qr-personal': 'Personal WeChat',
+            'qr-website': 'Visit Website',
+            'footer': 'EchoMind — Keeping Love Alive Beyond Memories'
+        };
+
+        function setLang(lang) {
+            document.getElementById('langDropdown').classList.remove('show');
+            localStorage.setItem('echomind-lang', lang);
+            applyTranslations(lang);
+        }
+
+        function applyTranslations(lang) {
+            const t = translations[lang];
+            if (!t) return;
+
+            // Nav links
+            const navLinks = document.querySelectorAll('.nav-links a');
+            if (navLinks[0]) navLinks[0].textContent = t['nav-1'];
+            if (navLinks[1]) navLinks[1].textContent = t['nav-2'];
+            if (navLinks[2]) navLinks[2].textContent = t['nav-3'];
+            if (navLinks[3]) navLinks[3].textContent = t['nav-4'];
+            if (navLinks[4]) navLinks[4].textContent = t['nav-5'];
+            if (navLinks[5]) navLinks[5].textContent = t['nav-cta'];
+
+            // Hero
+            if (document.querySelector('.hero h1')) document.querySelector('.hero h1').textContent = t['hero-title'];
+            if (document.querySelector('.hero-sub')) document.querySelector('.hero-sub').textContent = t['hero-sub'];
+            if (document.querySelector('.hero-cta')) document.querySelector('.hero-cta').textContent = t['hero-cta'];
+
+            // Pain points
+            if (document.querySelector('.pain-points .section-label')) document.querySelector('.pain-points .section-label').textContent = t['pain-label'];
+            if (document.querySelector('.pain-points .section-title')) document.querySelector('.pain-points .section-title').textContent = t['pain-title'];
+            const painCards = document.querySelectorAll('.pain-card h3');
+            const painDescs = document.querySelectorAll('.pain-card p');
+            if (painCards[0]) painCards[0].textContent = t['pain1-title'];
+            if (painCards[1]) painCards[1].textContent = t['pain2-title'];
+            if (painDescs[0]) painDescs[0].textContent = t['pain1-desc'];
+            if (painDescs[1]) painDescs[1].textContent = t['pain2-desc'];
+
+            // Solution
+            if (document.querySelector('.solution .section-label')) document.querySelector('.solution .section-label').textContent = t['solution-label'];
+            if (document.querySelector('.solution .section-title')) document.querySelector('.solution .section-title').textContent = t['solution-title'];
+            const solMain = document.querySelector('.solution-main');
+            if (solMain) solMain.innerHTML = t['solution-main'].replace(/"/g, '"');
+            const solNotes = document.querySelectorAll('.solution-content p');
+            if (solNotes[1]) solNotes[1].textContent = t['solution-note'];
+            const features = document.querySelectorAll('.feature h4');
+            const featureDescs = document.querySelectorAll('.feature p');
+            if (features[0]) features[0].textContent = t['feature1-title'];
+            if (features[1]) features[1].textContent = t['feature2-title'];
+            if (features[2]) features[2].textContent = t['feature3-title'];
+            if (featureDescs[0]) featureDescs[0].textContent = t['feature1-desc'];
+            if (featureDescs[1]) featureDescs[1].textContent = t['feature2-desc'];
+            if (featureDescs[2]) featureDescs[2].textContent = t['feature3-desc'];
+
+            // Audience
+            if (document.querySelector('.audience .section-label')) document.querySelector('.audience .section-label').textContent = t['audience-label'];
+            if (document.querySelector('.audience .section-title')) document.querySelector('.audience .section-title').textContent = t['audience-title'];
+            const audCards = document.querySelectorAll('.audience-card h4');
+            const audDescs = document.querySelectorAll('.audience-card p');
+            if (audCards[0]) audCards[0].textContent = t['aud1-title'];
+            if (audCards[1]) audCards[1].textContent = t['aud2-title'];
+            if (audCards[2]) audCards[2].textContent = t['aud3-title'];
+            if (audDescs[0]) audDescs[0].textContent = t['aud1-desc'];
+            if (audDescs[1]) audDescs[1].textContent = t['aud2-desc'];
+            if (audDescs[2]) audDescs[2].textContent = t['aud3-desc'];
+
+            // Note
+            if (document.querySelector('.important-note .section-label')) document.querySelector('.important-note .section-label').textContent = t['note-label'];
+            const noteP = document.querySelectorAll('.important-note p');
+            if (noteP[0]) noteP[0].textContent = t['note-text'];
+
+            // How it works
+            if (document.querySelector('.how-it-works .section-label')) document.querySelector('.how-it-works .section-label').textContent = t['how-label'];
+            if (document.querySelector('.how-it-works .section-title')) document.querySelector('.how-it-works .section-title').textContent = t['how-title'];
+            const steps = document.querySelectorAll('.step h4');
+            const stepDescs = document.querySelectorAll('.step p');
+            if (steps[0]) steps[0].textContent = t['step1-title'];
+            if (steps[1]) steps[1].textContent = t['step2-title'];
+            if (steps[2]) steps[2].textContent = t['step3-title'];
+            if (stepDescs[0]) stepDescs[0].textContent = t['step1-desc'];
+            if (stepDescs[1]) stepDescs[1].textContent = t['step2-desc'];
+            if (stepDescs[2]) stepDescs[2].textContent = t['step3-desc'];
+
+            // Pricing
+            if (document.querySelector('.pricing .section-label')) document.querySelector('.pricing .section-label').textContent = t['pricing-label'];
+            if (document.querySelector('.pricing .section-title')) document.querySelector('.pricing .section-title').textContent = t['pricing-title'];
+            if (document.querySelector('.pricing-badge')) document.querySelector('.pricing-badge').textContent = t['pricing-badge'];
+            const priceRed = document.querySelector('.price-red');
+            if (priceRed) priceRed.textContent = t['pricing-price'];
+            const pricingLis = document.querySelectorAll('.pricing-features li');
+            if (pricingLis[0]) {
+                pricingLis.forEach((li, i) => {
+                    if (t['pricing-features'][i]) li.textContent = t['pricing-features'][i];
+                });
+            }
+            const pricingFootnotes = document.querySelectorAll('.pricing-footnote');
+            if (pricingFootnotes[0]) pricingFootnotes[0].textContent = t['pricing-footnote'];
+
+            // FAQ
+            if (document.querySelector('.faq .section-label')) document.querySelector('.faq .section-label').textContent = t['faq-label'];
+            if (document.querySelector('.faq .section-title')) document.querySelector('.faq .section-title').textContent = t['faq-title'];
+            const faqQs = document.querySelectorAll('.faq-q');
+            const faqAs = document.querySelectorAll('.faq-a');
+            if (faqQs[0]) faqQs[0].textContent = t['faq1-q'];
+            if (faqQs[1]) faqQs[1].textContent = t['faq2-q'];
+            if (faqQs[2]) faqQs[2].textContent = t['faq3-q'];
+            if (faqQs[3]) faqQs[3].textContent = t['faq4-q'];
+            if (faqQs[4]) faqQs[4].textContent = t['faq5-q'];
+            if (faqAs[0]) faqAs[0].textContent = t['faq1-a'];
+            if (faqAs[1]) faqAs[1].textContent = t['faq2-a'];
+            if (faqAs[2]) faqAs[2].textContent = t['faq3-a'];
+            if (faqAs[3]) faqAs[3].textContent = t['faq4-a'];
+            if (faqAs[4]) faqAs[4].textContent = t['faq5-a'];
+
+            // Contact
+            if (document.querySelector('.wechat-section .section-label')) document.querySelector('.wechat-section .section-label').textContent = t['contact-label'];
+            if (document.querySelector('.wechat-section .section-title')) document.querySelector('.wechat-section .section-title').textContent = t['contact-title'];
+            const contactTexts = document.querySelectorAll('.contact-text');
+            if (contactTexts[0]) contactTexts[0].innerHTML = t['contact-text'].replace(/\n/g, '<br>');
+            const contactInfos = document.querySelectorAll('.contact-info');
+            if (contactInfos[0]) contactInfos[0].textContent = t['contact-email'];
+
+            // QR codes
+            const qrCodes = document.querySelectorAll('.qr-code-item p');
+            if (qrCodes[0]) qrCodes[0].textContent = t['qr-public'];
+            if (qrCodes[1]) qrCodes[1].textContent = t['qr-personal'];
+            if (qrCodes[2]) qrCodes[2].textContent = t['qr-website'];
+
+            // Footer
+            if (document.querySelector('.footer-text')) document.querySelector('.footer-text').textContent = t['footer'];
+        }
+
+        // Init
+        const savedLang = localStorage.getItem('echomind-lang') || 'zh-CN';
+        applyTranslations(savedLang);
     </script>
 </body>
 </html>
