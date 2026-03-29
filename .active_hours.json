@@ -1,0 +1,9 @@
+{
+  "morning": {"start": 469, "end": 499},
+  "noon": {"start": 703, "end": 780},
+  "afternoon": {"start": 864, "end": 894},
+  "evening": {"start": 1090, "end": 1120},
+  "dinner": {"start": 1129, "end": 1159},
+  "night": {"start": 1332, "end": 1362},
+  "updated": "2026-03-29T11:42:32+08:00"
+}

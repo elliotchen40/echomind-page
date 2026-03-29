@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "skills": {
+    "agent-browser-clawdbot": {
+      "version": "0.1.0",
+      "installedAt": 1774686251398
+    },
+    "xiaohongshu-all-in-one": {
+      "version": "2.0.0",
+      "installedAt": 1774688934073
+    },
+    "xiaohongshu-mcp-skills": {
+      "version": "0.1.0",
+      "installedAt": 1774688976974
+    },
+    "self-improving-skill": {
+      "version": "1.0.0",
+      "installedAt": 1774703584991
+    },
+    "openclaw-weixin": {
+      "version": "2.0.1",
+      "installedAt": 1774712682018
+    }
+  }
+}
