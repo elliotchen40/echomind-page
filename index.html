@@ -687,6 +687,12 @@
         }
 
         /* QR Codes Container */
+        .qr-codes-wrapper {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
         .qr-codes-container {
             display: flex;
             justify-content: center;
@@ -995,7 +1001,8 @@
         <p class="section-label fade-in">预约咨询</p>
         <h2 class="section-title fade-in">我们在这里</h2>
         <div class="wechat-content fade-in">
-            <div class="qr-codes-container">
+            <div class="qr-codes-wrapper">
+                <div class="qr-codes-container">
                 <div class="qr-code-item">
                     <img src="wechat-qrcode-new.jpg" alt="个人微信二维码">
                     <p>公众号：EchoMind回声</p>
@@ -1008,6 +1015,7 @@
                     <img src="qrcode_website.png" alt="网站二维码">
                     <p>访问网站</p>
                 </div>
+                </div>
             <p class="contact-text">
                 如果你正在经历失去，<br>
                 如果你希望留下更多关于他们的记忆，<br>
@@ -1015,7 +1023,7 @@
             </p>
             <p class="contact-info">
                 或发送邮件至 echomind2026@163.com
-            </p>
+            </div>
         </div>
     </section>
 
