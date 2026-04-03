@@ -840,6 +840,81 @@
                 font-size: 2.8rem;
             }
         }
+
+        /* Contact Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(92, 64, 51, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-overlay.show {
+            display: flex;
+        }
+        .modal-content {
+            background: var(--warm-white);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(92, 64, 51, 0.2);
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--light-gray);
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+        .modal-close:hover {
+            color: var(--deep-brown);
+        }
+        .modal-title {
+            font-size: 1.3rem;
+            color: var(--deep-brown);
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+        .modal-qr-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
+        }
+        .modal-qr-item {
+            text-align: center;
+        }
+        .modal-qr-item img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .modal-qr-item p {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--deep-brown);
+        }
+        .modal-note {
+            margin-top: 25px;
+            font-size: 0.85rem;
+            color: var(--light-gray);
+            line-height: 1.8;
+        }
     </style>
 </head>
 <body>
@@ -860,7 +935,7 @@
             <a href="#how">服务流程</a>
             <a href="#pricing">费用</a>
             <a href="#faq">常见问题</a>
-            <a href="#contact" class="nav-cta">立即咨询</a>
+            <a href="javascript:void(0)" class="nav-cta" onclick="showContactModal()">立即咨询</a>
         </div>
     </nav>
 
@@ -890,13 +965,6 @@
                 <h3>再也收不到的回应</h3>
                 <p>信息里的关心、餐桌上的谈笑、夕阳下的陪伴……那些温暖的言语，只能在曾经的聊天记录里翻看。</p>
             </div>
-        </div>
-        <div style="text-align: center; margin-top: 60px;" class="fade-in">
-            <p style="font-size: 1.1rem; color: var(--light-gray); max-width: 600px; margin: 0 auto; line-height: 2;">
-                失去至亲后，我们常常在某个瞬间感到窒息——<br>
-                听到一首老歌、路过一条老街、遇到一件旧物……<br>
-                思念如潮水般涌来，却无处安放。
-            </p>
         </div>
     </section>
 
@@ -987,7 +1055,7 @@
             <div class="step-card">
                 <div class="step-num">2</div>
                 <h4>数据准备</h4>
-                <p>提供微信聊天记录、语音、照片等材料，我们协助整理</p>
+                <p>提供微信聊天记录、语音等材料，我们协助整理</p>
             </div>
             <div class="step-card">
                 <div class="step-num">3</div>
@@ -1032,7 +1100,7 @@
             </div>
             <div class="faq-item fade-in">
                 <div class="faq-q">需要提供哪些材料？</div>
-                <div class="faq-a">主要是：① 逝者的微信聊天记录（越丰富越好）；② 语音消息（如果有）；③ 照片（可选）。我们会提供详细的数据准备清单，协助你整理。</div>
+                <div class="faq-a">主要是：① 逝者的微信聊天记录（越丰富越好）；② 语音消息（如果有）。我们会提供详细的数据准备清单，协助你整理。</div>
             </div>
             <div class="faq-item fade-in">
                 <div class="faq-q">AI说的话是真实记录，还是AI生成的？</div>
@@ -1069,7 +1137,7 @@
                     <p>微信号</p>
                 </div>
                 <div class="qr-code-item">
-                    <img src="qrcode_website.png" alt="网站二维码">
+                    <img src="../docs/qrcode_website.png" alt="网站二维码">
                     <p>访问网站</p>
                 </div>
                 </div>
@@ -1085,6 +1153,25 @@
     </section>
 
     <!-- Footer -->
+    <!-- Contact Modal -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="hideContactModal()">×</button>
+            <h3 class="modal-title">添加微信好友</h3>
+            <div class="modal-qr-list">
+                <div class="modal-qr-item">
+                    <img src="wechat-qrcode-new.jpg" alt="个人微信二维码">
+                    <p>公众号：EchoMind</p>
+                </div>
+                <div class="modal-qr-item">
+                    <img src="wechat-qrcode.jpg" alt="微信公众号二维码">
+                    <p>微信号</p>
+                </div>
+            </div>
+            <p class="modal-note">长按识别二维码<br>或发送邮件至 echomind2026@163.com</p>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-divider"></div>
         <p class="footer-text">EchoMind — 让爱，不止于回忆</p>
@@ -1131,6 +1218,21 @@
                 document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
                 if (!wasOpen) item.classList.add('open');
             });
+        });
+
+        // Contact Modal
+        function showContactModal() {
+            document.getElementById('contactModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        function hideContactModal() {
+            document.getElementById('contactModal').classList.remove('show');
+            document.body.style.overflow = '';
+        }
+        document.getElementById('contactModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideContactModal();
+            }
         });
 
         // Navbar background on scroll
@@ -1214,7 +1316,7 @@
             'faq1-q': '这个服务是让亲人"复活"吗？',
             'faq1-a': '不是。没有任何技术可以真正替代一个人。EchoMind 所做的是基于逝者留下的数据（聊天记录、语音等）构建一个"记忆模型"，让生者的思念有一个可以倾诉和回应的载体。这是一种情感陪伴，而非复活。',
             'faq2-q': '需要提供哪些材料？',
-            'faq2-a': '主要是：① 逝者的微信聊天记录（越丰富越好）；② 语音消息（如果有）；③ 照片（可选）。我们会提供详细的数据准备清单，协助你整理。',
+            'faq2-a': '主要是：① 逝者的微信聊天记录（越丰富越好）；② 语音消息（如果有）。我们会提供详细的数据准备清单，协助你整理。',
             'faq3-q': 'AI说的话是真实记录，还是AI生成的？',
             'faq3-a': '两者都有。AI会学习逝者的语言风格和常用表达来生成回应，这是基于记忆的"模仿"而非原始记录。我们会在交付时如实告知。',
             'faq4-q': '数据安全吗？',
@@ -1290,7 +1392,7 @@
             'faq1-q': '這個服務是讓親人"復活"嗎？',
             'faq1-a': '不是。沒有任何技術可以真正替代一個人。EchoMind 所做的是基於逝者留下的數據（聊天記錄、語音等）構建一個"記憶模型"，讓生者的思念有一個可以傾訴和回應的載體。這是一種情感陪伴，而非復活。',
             'faq2-q': '需要提供哪些材料？',
-            'faq2-a': '主要是：① 逝者的微信聊天記錄（越豐富越好）；② 語音消息（如果有）；③ 照片（可選）。我們會提供詳細的數據準備清單，協助你整理。',
+            'faq2-a': '主要是：① 逝者的微信聊天記錄（越豐富越好）；② 語音消息（如果有）。我們會提供詳細的數據準備清單，協助你整理。',
             'faq3-q': 'AI說的話是真實記錄，還是AI生成的？',
             'faq3-a': '兩者都有。AI會學習逝者的語言風格和常用表達來生成回應，這是基於記憶的"模仿"而非原始記錄。我們會在交付時如實告知。',
             'faq4-q': '數據安全嗎？',
