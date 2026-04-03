@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="EchoMind — 用人工智能技术复刻被爱的言语与声音，让爱者能够在思念时与温暖的记忆对话。这不是复活，是克制地让爱延续。">
-    <meta name="keywords" content="AI纪念,数字永生,记忆保存,声音克隆,人工智能,亲人,思念">
-    <meta property="og:title" content="EchoMind — 让爱，不止于回忆">
-    <meta property="og:description" content="用AI保存亲人的言语与声音，让爱延续">
+    <meta name="description" content="EchoMind — 让爱与声音得以延续。AI记忆保存与特殊儿童支持，用熟悉的声音提供陪伴与温暖。">
+    <meta name="keywords" content="EchoMind,AI纪念,声音保存,记忆延续,特殊儿童支持">
+    <meta property="og:title" content="EchoMind — 让熟悉的声音，继续被听见">
+    <meta property="og:description" content="选择您的需求，开启专属的记忆之旅">
     <meta property="og:type" content="website">
-    <title>EchoMind — 让爱，不止于回忆</title>
+    <title>EchoMind — 让熟悉的声音，继续被听见</title>
     <style>
         * {
             margin: 0;
@@ -35,6 +35,7 @@
             background-color: var(--warm-white);
             color: var(--deep-brown);
             line-height: 1.8;
+            min-height: 100vh;
         }
 
         /* Navigation */
@@ -53,7 +54,6 @@
             border-bottom: 1px solid rgba(212, 184, 150, 0.15);
         }
 
-        .logo-img { height: 80px; }
         .logo {
             font-size: 1.5rem;
             font-weight: 600;
@@ -61,49 +61,6 @@
             letter-spacing: 2px;
         }
 
-        /* Language Selector */
-        .lang-selector {
-            position: relative;
-            display: inline-block;
-            margin-right: 20px;
-        }
-        .lang-selector button {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-        .lang-selector button:hover {
-            background: rgba(212, 184, 150, 0.2);
-        }
-        .lang-dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: var(--warm-white);
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            overflow: hidden;
-            z-index: 1001;
-        }
-        .lang-dropdown.show {
-            display: block;
-        }
-        .lang-dropdown a {
-            display: block;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: var(--deep-brown);
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
-        .lang-dropdown a:hover {
-            background: var(--soft-gray);
-        }
         .nav-links a {
             margin-left: 40px;
             text-decoration: none;
@@ -117,23 +74,17 @@
             opacity: 1;
         }
 
-        .nav-cta {
-            background: var(--light-gold) !important;
-            color: var(--warm-white) !important;
-            padding: 10px 24px;
-            border-radius: 30px;
-            opacity: 1 !important;
-        }
-
         /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
             background: linear-gradient(165deg, var(--warm-beige) 0%, var(--soft-gold) 50%, var(--warm-beige) 100%);
+            padding: 120px 60px 80px;
         }
 
         .hero::before {
@@ -158,74 +109,35 @@
             z-index: 2;
             text-align: center;
             max-width: 800px;
-            padding: 40px;
         }
 
         .hero-tagline {
-            font-size: 1.1rem;
-            color: var(--light-gray);
+            font-size: 1rem;
+            color: var(--light-gold);
             letter-spacing: 8px;
             text-transform: uppercase;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             opacity: 0;
             animation: fadeUp 1s ease 0.3s forwards;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 300;
             color: var(--deep-brown);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             opacity: 0;
-            animation: fadeUp 1s ease 0.6s forwards;
+            animation: fadeUp 1s ease 0.5s forwards;
             letter-spacing: 6px;
         }
 
         .hero-sub {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--light-gray);
-            max-width: 500px;
-            margin: 0 auto 50px;
+            max-width: 550px;
+            margin: 0 auto 60px;
             opacity: 0;
-            animation: fadeUp 1s ease 0.9s forwards;
-        }
-
-        .hero-cta {
-            display: inline-block;
-            background: var(--deep-brown);
-            color: var(--warm-white);
-            padding: 16px 48px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1rem;
-            letter-spacing: 2px;
-            opacity: 0;
-            animation: fadeUp 1s ease 1.2s forwards;
-            transition: all 0.4s ease;
-        }
-
-        .hero-cta:hover {
-            background: var(--light-gold);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(92, 64, 51, 0.15);
-        }
-
-        .scroll-hint {
-            position: absolute;
-            bottom: 60px;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            animation: fadeUp 1s ease 1.5s forwards, float 3s ease-in-out infinite 2.5s;
-        }
-
-        .scroll-hint::before {
-            content: '';
-            display: block;
-            width: 1px;
-            height: 60px;
-            background: linear-gradient(to bottom, var(--light-gold), transparent);
-            margin: 0 auto;
+            animation: fadeUp 1s ease 0.7s forwards;
         }
 
         @keyframes fadeUp {
@@ -233,569 +145,167 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
+        /* Selection Cards */
+        .selection-wrapper {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 900px;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.9s forwards;
         }
 
-        /* Sections */
-        section {
-            padding: 120px 60px;
-        }
-
-        .section-label {
+        .selection-label {
             text-align: center;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             color: var(--light-gold);
             letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            font-weight: 300;
-            color: var(--deep-brown);
-            margin-bottom: 60px;
-            letter-spacing: 4px;
-        }
-
-        /* Pain Points */
-        .pain-points {
-            background: linear-gradient(180deg, var(--warm-white) 0%, var(--soft-gray) 100%);
-        }
-
-        .pain-grid {
-            max-width: 1000px;
-            margin: 0 auto;
+        .selection-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 30px;
         }
 
-        .pain-card {
+        .selection-card {
             background: var(--warm-white);
+            border-radius: 24px;
             padding: 50px 40px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(92, 64, 51, 0.06);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            text-decoration: none;
+            color: var(--deep-brown);
+            box-shadow: 0 15px 50px rgba(92, 64, 51, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .pain-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(92, 64, 51, 0.1);
+        .selection-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--light-gold), var(--soft-gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
         }
 
-        .pain-icon {
+        .selection-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .selection-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(92, 64, 51, 0.15);
+        }
+
+        .card-icon {
             width: 80px;
             height: 80px;
-            margin: 0 auto 30px;
+            margin-bottom: 25px;
             background: linear-gradient(135deg, var(--soft-gold), var(--warm-beige));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 2.2rem;
         }
 
-        .pain-card h3 {
-            font-size: 1.3rem;
+        .card-label {
+            font-size: 0.75rem;
+            color: var(--light-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
             font-weight: 500;
-            margin-bottom: 15px;
             color: var(--deep-brown);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
         }
 
-        .pain-card p {
+        .card-desc {
             font-size: 0.95rem;
             color: var(--light-gray);
-            line-height: 2;
+            line-height: 1.9;
+            margin-bottom: 25px;
         }
 
-        /* Solution */
-        .solution {
-            background: var(--warm-white);
-            text-align: center;
-        }
-
-        .solution-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .solution-main {
-            font-size: 1.4rem;
-            color: var(--deep-brown);
-            margin-bottom: 50px;
-            line-height: 2.2;
-        }
-
-        .solution-features {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin-top: 60px;
-        }
-
-        .feature {
-            text-align: center;
-        }
-
-        .feature-icon {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, var(--warm-beige), var(--soft-gold));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-        }
-
-        .feature h4 {
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--deep-brown);
-            margin-bottom: 8px;
-        }
-
-        .feature p {
-            font-size: 0.75rem;
-            color: var(--light-gray);
-        }
-
-        /* Audience */
-        .audience {
-            background: linear-gradient(180deg, var(--soft-gray) 0%, var(--warm-beige) 100%);
-        }
-
-        .audience-grid {
-            max-width: 900px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .audience-card {
-            background: var(--warm-white);
-            padding: 40px 30px;
-            border-radius: 20px;
-            text-align: center;
-            transition: transform 0.4s ease;
-        }
-
-        .audience-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .audience-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, var(--soft-gold), var(--light-gold));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-        }
-
-        .audience-card h4 {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--deep-brown);
-            margin-bottom: 10px;
-        }
-
-        .audience-card p {
-            font-size: 0.9rem;
-            color: var(--light-gray);
-        }
-
-        /* Important Note */
-        .important-note {
-            background: linear-gradient(135deg, var(--warm-beige), var(--soft-gold));
-            text-align: center;
-        }
-
-        .note-content {
-            max-width: 650px;
-            margin: 0 auto;
-        }
-
-        .note-icon {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 30px;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-        }
-
-        .note-content h3 {
-            font-size: 1.6rem;
-            font-weight: 400;
-            color: var(--deep-brown);
-            margin-bottom: 20px;
-            letter-spacing: 3px;
-        }
-
-        .note-content p {
-            font-size: 1.05rem;
-            color: var(--deep-brown);
-            opacity: 0.85;
-            line-height: 2;
-        }
-
-        .highlight {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.5);
-            padding: 3px 12px;
-            border-radius: 20px;
-            margin: 0 5px;
-        }
-
-        /* Contact */
-        .contact {
-            background: var(--warm-white);
-            text-align: center;
-        }
-
-        .contact-content {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .contact-text {
-            font-size: 1.1rem;
-            color: var(--light-gray);
-            margin-bottom: 40px;
-        }
-
-        .contact-btn {
-            display: inline-block;
-            background: var(--deep-brown);
-            color: var(--warm-white);
-            padding: 18px 60px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            transition: all 0.4s ease;
-        }
-
-        .contact-btn:hover {
-            background: var(--light-gold);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(92, 64, 51, 0.2);
-        }
-
-        .contact-info {
-            margin-top: 40px;
-            font-size: 0.9rem;
-            color: var(--light-gray);
-        }
-
-        /* How it Works */
-        .how-it-works {
-            background: var(--warm-white);
-        }
-
-        .steps-grid {
-            max-width: 900px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            position: relative;
-        }
-
-        .steps-grid::before {
-            content: '';
-            position: absolute;
-            top: 45px;
-            left: 10%;
-            right: 10%;
-            height: 2px;
-            background: linear-gradient(to right, var(--soft-gold), var(--light-gold), var(--soft-gold));
-            z-index: 0;
-        }
-
-        .step-card {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .step-num {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 20px;
-            background: var(--warm-beige);
-            border: 2px solid var(--light-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--deep-brown);
-        }
-
-        .step-card h4 {
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--deep-brown);
-            margin-bottom: 8px;
-        }
-
-        .step-card p {
-            font-size: 0.75rem;
-            color: var(--light-gray);
-            line-height: 1.7;
-        }
-
-        /* Pricing */
-        .pricing {
-            background: linear-gradient(180deg, var(--soft-gray) 0%, var(--warm-beige) 100%);
-            text-align: center;
-        }
-
-        .pricing-card {
-            max-width: 480px;
-            margin: 0 auto;
-            background: var(--warm-white);
-            border-radius: 24px;
-            padding: 50px 40px;
-            box-shadow: 0 15px 50px rgba(92, 64, 51, 0.08);
-        }
-
-        .pricing-badge {
-            display: inline-block;
-            background: var(--soft-gold);
-            color: var(--deep-brown);
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-        }
-
-        .pricing-price {
-            font-size: 3.5rem;
-            font-weight: 300;
-            color: var(--deep-brown);
-            margin-bottom: 5px;
-        }
-
-        .pricing-price span {
-            font-size: 1.2rem;
-        }
-
-        .pricing-desc {
-            color: var(--light-gray);
-            font-size: 0.9rem;
-            margin-bottom: 30px;
-        }
-
-        .pricing-features {
+        .card-features {
             list-style: none;
             text-align: left;
-            margin-bottom: 35px;
         }
 
-        .pricing-features li {
-            padding: 10px 0;
-            border-bottom: 1px solid var(--soft-gray);
-            color: var(--deep-brown);
-            font-size: 0.95rem;
+        .card-features li {
+            font-size: 0.88rem;
+            color: var(--light-gray);
+            padding: 8px 0;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .pricing-features li::before {
-            content: '✓';
+        .card-features li::before {
+            content: '·';
             color: var(--light-gold);
-            font-weight: bold;
+            font-size: 1.3rem;
         }
 
-        .price-red { color: #dc3545; font-weight: bold; }
-        .pricing-note {
-            font-size: 0.8rem;
-            color: var(--light-gray);
-            margin-top: 15px;
-        }
-
-        /* FAQ */
-        .faq {
-            background: var(--warm-white);
-        }
-
-        .faq-list {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid var(--soft-gray);
-            padding: 25px 0;
-        }
-
-        .faq-q {
-            font-size: 1.05rem;
-            font-weight: 500;
-            color: var(--deep-brown);
-            margin-bottom: 12px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .faq-q::after {
-            content: '+';
-            font-size: 1.4rem;
-            color: var(--light-gold);
-            transition: transform 0.3s;
-        }
-
-        .faq-item.open .faq-q::after {
-            transform: rotate(45deg);
-        }
-
-        .faq-a {
-            font-size: 0.92rem;
-            color: var(--light-gray);
-            line-height: 1.9;
-            display: none;
-        }
-
-        .faq-item.open .faq-a {
-            display: block;
-        }
-
-        /* WeChat */
-        .wechat-section {
-            background: linear-gradient(135deg, var(--warm-beige), var(--soft-gold));
-            text-align: center;
-        }
-
-        .wechat-content {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .wechat-icon {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 25px;
-            background: rgba(255, 255, 255, 0.6);
+        .card-arrow {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--soft-gold), var(--warm-beige));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
         }
 
-        .wechat-content h3 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: var(--deep-brown);
-            margin-bottom: 15px;
-            letter-spacing: 3px;
+        .selection-card:hover .card-arrow {
+            opacity: 1;
+            transform: translateX(0);
         }
 
-        .wechat-content p {
-            color: var(--deep-brown);
-            opacity: 0.8;
-            font-size: 1rem;
-            line-height: 1.9;
-            margin-bottom: 25px;
-        }
-
-        .wechat-id {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.5);
-            padding: 8px 24px;
-            border-radius: 30px;
-            font-size: 1rem;
-            color: var(--deep-brown);
-            letter-spacing: 1px;
-        }
-
-        /* QR Codes Container */
-        .qr-codes-wrapper {
-            background: rgba(255, 255, 255, 0.5);
-            padding: 30px;
-            border-radius: 16px;
-            margin-bottom: 30px;
-        }
-        .qr-codes-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-            
-        }
-
-        .qr-code-item {
-            vertical-align: top;
+        /* Footer */
+        footer {
+            padding: 40px;
             text-align: center;
-        }
-
-        .qr-code-item img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .qr-code-item p {
-            margin-top: 10px;
-            font-size: 0.9rem;
-            color: var(--deep-brown);
-        }
-
-        .pricing-footnote {
-            color: var(--light-gray);
-            font-size: 0.75rem;
-            margin-top: 20px;
-        }
-
-        .footer-text {
-            font-size: 0.75rem;
-            color: var(--light-gray);
-            letter-spacing: 1px;
+            background: var(--warm-white);
         }
 
         .footer-divider {
             width: 60px;
             height: 1px;
             background: var(--light-gold);
-            margin: 20px auto;
+            margin: 0 auto 20px;
             opacity: 0.5;
         }
 
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+        .footer-text {
+            font-size: 0.85rem;
+            color: var(--light-gray);
+            letter-spacing: 1px;
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .footer-note {
+            font-size: 0.75rem;
+            color: var(--light-gray);
+            opacity: 0.7;
+            margin-top: 10px;
         }
 
         /* Responsive */
@@ -808,822 +318,83 @@
                 display: none;
             }
 
+            .hero {
+                padding: 100px 30px 60px;
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
                 letter-spacing: 3px;
             }
 
-            section {
-                padding: 80px 30px;
+            .hero-sub {
+                font-size: 1rem;
             }
 
-            .pain-grid,
-            .audience-grid {
+            .selection-grid {
                 grid-template-columns: 1fr;
             }
 
-            .solution-features {
-                flex-direction: column;
-                gap: 20px;
+            .selection-card {
+                padding: 40px 30px;
             }
-
-            .steps-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 30px;
-            }
-
-            .steps-grid::before {
-                display: none;
-            }
-
-            .pricing-price {
-                font-size: 2.8rem;
-            }
-        }
-
-        /* Contact Modal */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(92, 64, 51, 0.6);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-overlay.show {
-            display: flex;
-        }
-        .modal-content {
-            background: var(--warm-white);
-            border-radius: 24px;
-            padding: 40px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 20px 60px rgba(92, 64, 51, 0.2);
-        }
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 1.5rem;
-            color: var(--light-gray);
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 5px;
-        }
-        .modal-close:hover {
-            color: var(--deep-brown);
-        }
-        .modal-title {
-            font-size: 1.3rem;
-            color: var(--deep-brown);
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-        }
-        .modal-qr-list {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            align-items: center;
-        }
-        .modal-qr-item {
-            text-align: center;
-        }
-        .modal-qr-item img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .modal-qr-item p {
-            margin-top: 10px;
-            font-size: 0.9rem;
-            color: var(--deep-brown);
-        }
-        .modal-note {
-            margin-top: 25px;
-            font-size: 0.85rem;
-            color: var(--light-gray);
-            line-height: 1.8;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
-        <img src="logo.jpg" alt="EchoMind" class="logo-img">
-        <div class="lang-selector">
-            <button onclick="toggleLang()" aria-label="Language">🌐</button>
-            <div class="lang-dropdown" id="langDropdown">
-                <a href="#" onclick="setLang('zh-CN')">简体中文</a>
-                <a href="#" onclick="setLang('zh-TW')">繁體中文</a>
-                <a href="#" onclick="setLang('en')">English</a>
-            </div>
-        </div>
+        <div class="logo">EchoMind</div>
         <div class="nav-links">
-            <a href="#pain">关于思念</a>
-            <a href="#solution">我们的方式</a>
-            <a href="#how">服务流程</a>
-            <a href="#pricing">费用</a>
-            <a href="#faq">常见问题</a>
-            <a href="javascript:void(0)" class="nav-cta" onclick="showContactModal()">立即咨询</a>
+            <a href="#memorial">AI纪念</a>
+            <a href="#support">特殊支持</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <p class="hero-tagline">AI MEMORIAL SYSTEM</p>
-            <h1>让爱，不止于回忆</h1>
-            <p class="hero-sub">当最亲的人离开，我们只能用记忆去触碰他们。而EchoMind，让这份记忆可以倾听、可以回应。</p>
-            <a href="#pain" class="hero-cta">了解更多</a>
+            <p class="hero-tagline">AI MEMORY & SUPPORT</p>
+            <h1>让熟悉的声音，继续被听见</h1>
+            <p class="hero-sub">我们用人工智能技术，让爱与声音以另一种方式延续。无论您是希望保留珍贵的记忆，还是需要为孩子提供更温暖的支持，EchoMind都在这里。</p>
         </div>
-        <div class="scroll-hint"></div>
-    </section>
 
-    <!-- Pain Points -->
-    <section class="pain-points" id="pain">
-        <p class="section-label fade-in">关于思念</p>
-        <h2 class="section-title fade-in">那些再也听不到的声音</h2>
-        <div class="pain-grid">
-            <div class="pain-card fade-in">
-                <div class="pain-icon">&#128532;</div>
-                <h3>再也听不到的声音</h3>
-                <p>父母的叮咛、爱人的问候、祖父母的呼唤……那些熟悉的声音，随着时间渐渐模糊，你却无能为力。</p>
-            </div>
-            <div class="pain-card fade-in">
-                <div class="pain-icon">&#128546;</div>
-                <h3>再也收不到的回应</h3>
-                <p>信息里的关心、餐桌上的谈笑、夕阳下的陪伴……那些温暖的言语，只能在曾经的聊天记录里翻看。</p>
-            </div>
-        </div>
-    </section>
+        <div class="selection-wrapper">
+            <p class="selection-label">请选择您的需求</p>
+            <div class="selection-grid">
+                <!-- Memorial Card -->
+                <a href="../homepage/index.html" class="selection-card" id="memorial">
+                    <div class="card-icon">&#128156;</div>
+                    <p class="card-label">AI纪念</p>
+                    <h3 class="card-title">让爱，不止于回忆</h3>
+                    <p class="card-desc">当最亲的人离开，我们用AI技术保存他们的声音与言语风格，让爱可以在思念时继续被听见、被回应。</p>
+                    <ul class="card-features">
+                        <li>声音与聊天风格留存</li>
+                        <li>微信接入，随时对话</li>
+                        <li>克制的情感陪伴</li>
+                    </ul>
+                    <div class="card-arrow">&#10148;</div>
+                </a>
 
-    <!-- Solution -->
-    <section class="solution" id="solution">
-        <p class="section-label fade-in">我们的方式</p>
-        <h2 class="section-title fade-in">让记忆，以另一种方式延续</h2>
-        <div class="solution-content fade-in">
-            <p class="solution-main">
-                EchoMind 运用人工智能技术，<br>
-                将逝者的声音与聊天风格留存下来，<br>
-                让生者能够在思念时，<br>
-                与那份温暖的"记忆"对话、互动。
-            </p>
-            <p style="color: var(--light-gray); font-size: 1rem; line-height: 2;">
-                这不是让他们"回来"，而是让爱继续有一个寄托。<br>
-                当你想念他们的时候，可以写出来说出来，可以收到可以听见可以回应。
-            </p>
-        </div>
-        <div class="solution-features fade-in">
-            <div class="feature">
-                <div class="feature-icon">&#128276;</div>
-                <h4>声音保存</h4>
-                <p>留住那些熟悉的话语</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">&#128247;</div>
-                <h4>风格延续</h4>
-                <p>让关心继续温暖你</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">&#129504;</div>
-                <h4>对话延续</h4>
-                <p>思念时，有人倾听</p>
+                <!-- Support Card -->
+                <a href="../second_page/index.html" class="selection-card" id="support">
+                    <div class="card-icon">&#128147;</div>
+                    <p class="card-label">特殊支持</p>
+                    <h3 class="card-title">让熟悉的声音，成为一种支持</h3>
+                    <p class="card-desc">对于一些孩子来说，这个世界的声音太陌生。我们用父母熟悉的声音与表达方式，在需要的时候提供支持与陪伴。</p>
+                    <ul class="card-features">
+                        <li>熟悉声音的记录与建模</li>
+                        <li>日常行为引导与情绪安抚</li>
+                        <li>用他们信任的方式沟通</li>
+                    </ul>
+                    <div class="card-arrow">&#10148;</div>
+                </a>
             </div>
         </div>
     </section>
-
-    <!-- Audience -->
-    <section class="audience" id="audience">
-        <p class="section-label fade-in">适用人群</p>
-        <h2 class="section-title fade-in">我们为谁而来</h2>
-        <div class="audience-grid">
-            <div class="audience-card fade-in">
-                <div class="audience-icon">&#128149;</div>
-                <h4>失去配偶/伴侣</h4>
-                <p>那些只属于你们的悄悄话，还想再一起说一次</p>
-            </div>
-            <div class="audience-card fade-in">
-                <div class="audience-icon">&#128118;</div>
-                <h4>失去年迈父母</h4>
-                <p>还没来得及好好告别，还有太多话没说</p>
-            </div>
-            <div class="audience-card fade-in">
-                <div class="audience-icon">&#128104;</div>
-                <h4>未曾见过的祖父母</h4>
-                <p>亲情的延续，家庭的温暖，没有缺憾的欢聚一堂</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Important Note -->
-    <section class="important-note" id="note">
-        <p class="section-label fade-in" style="color: var(--deep-brown); opacity: 0.7;">重要说明</p>
-        <div class="note-content fade-in">
-            <div class="note-icon">&#10052;&#65039;</div>
-            <h3>这不是复活，是克制地让爱延续</h3>
-            <p>
-                我们深知，没有技术可以真正替代一个人。<br>
-                EchoMind 所做的，<span class="highlight">不是让逝者归来</span>，<br>
-                而是让生者的思念有一个安放之处。<br><br>
-                当你想念他们的时候，可以说出来，可以听见回应——<br>
-                <span class="highlight">这份温暖，属于你，属于还活着的你们。</span>
-            </p>
-        </div>
-    </section>
-
-    <!-- How it Works -->
-    <section class="how-it-works" id="how">
-        <p class="section-label fade-in">服务流程</p>
-        <h2 class="section-title fade-in">如何为挚爱创建记忆</h2>
-        <div class="steps-grid fade-in">
-            <div class="step-card">
-                <div class="step-num">1</div>
-                <h4>联系咨询</h4>
-                <p>添加微信，说明情况与需求，我们帮你评估可行性</p>
-            </div>
-            <div class="step-card">
-                <div class="step-num">2</div>
-                <h4>数据准备</h4>
-                <p>提供微信聊天记录、语音等材料，我们协助整理</p>
-            </div>
-            <div class="step-card">
-                <div class="step-num">3</div>
-                <h4>人格建模</h4>
-                <p>AI学习逝者的语言风格、情绪反应、常用表达</p>
-            </div>
-            <div class="step-card">
-                <div class="step-num">4</div>
-                <h4>交付陪伴</h4>
-                <p>接入微信，随时对话，思念时有人倾听与回应</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing -->
-    <section class="pricing" id="pricing">
-        <p class="section-label fade-in">服务费用</p>
-        <h2 class="section-title fade-in">一份值得的爱的礼物</h2>
-        <div class="pricing-card fade-in">
-            <div class="pricing-badge">统一价格</div>
-            <div class="pricing-price"><span>¥</span><s>1999</s> <span class="price-red">方案限时公益价 ¥0*</span></div>
-            
-            <ul class="pricing-features">
-                <li>深度人格建模，还原真实个性</li>
-                <li>微信接入，随时随地对话</li>
-                <li>声音与文字双重交互</li>
-                <li>数据加密存储，仅你可访问</li>
-                <li>交付后持续优化调整</li>
-            </ul>
-            
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq" id="faq">
-        <p class="section-label fade-in">常见问题</p>
-        <h2 class="section-title fade-in">你可能想问的</h2>
-        <div class="faq-list">
-            <div class="faq-item fade-in">
-                <div class="faq-q">这个服务是让亲人"复活"吗？</div>
-                <div class="faq-a">不是。没有任何技术可以真正替代一个人。EchoMind 所做的是基于逝者留下的数据（聊天记录、语音等）构建一个"记忆模型"，让生者的思念有一个可以倾诉和回应的载体。这是一种情感陪伴，而非复活。</div>
-            </div>
-            <div class="faq-item fade-in">
-                <div class="faq-q">需要提供哪些材料？</div>
-                <div class="faq-a">主要是：① 逝者的微信聊天记录（越丰富越好）；② 语音消息（如果有）。我们会提供详细的数据准备清单，协助你整理。</div>
-            </div>
-            <div class="faq-item fade-in">
-                <div class="faq-q">AI说的话是真实记录，还是AI生成的？</div>
-                <div class="faq-a">两者都有。AI会学习逝者的语言风格和常用表达来生成回应，这是基于记忆的"模仿"而非原始记录。我们会在交付时如实告知。</div>
-            </div>
-            <div class="faq-item fade-in">
-                <div class="faq-q">数据安全吗？</div>
-                <div class="faq-a">所有数据均加密存储，仅你和被授权的人可以访问。我们严格保护隐私，不会用于任何其他用途。</div>
-            </div>
-            <div class="faq-item fade-in">
-                <div class="faq-q">制作需要多长时间？</div>
-                <div class="faq-a">根据数据量和复杂度，一般需要 2–4 周。期间我们会与你保持沟通，确保效果符合预期。</div>
-            </div>
-            <div class="faq-item fade-in">
-                <div class="faq-q">能否重建视频和图像？</div>
-                <div class="faq-a">回忆是为了不要忘却，而不是逃避现实；纪念是为了努力继续，而不是沉迷过去；EchoMind相信文字和声音的力量已经足够能传递情感和提供陪伴，渡过最艰难的时光。而太过于直观的虚拟影像，于身心无益。爱即是克制。</div>
-            </div>
-            <div class="faq-item fade-in">
-    </section>
-
-    <!-- 咨询联系 -->
-    <section class="wechat-section" id="wechat">
-        <p class="section-label fade-in">预约咨询</p>
-        <h2 class="section-title fade-in">我们在这里</h2>
-        <div class="wechat-content fade-in">
-            <div class="qr-codes-wrapper">
-                <div class="qr-codes-container">
-                <div class="qr-code-item">
-                    <img src="wechat-qrcode-new.jpg" alt="个人微信二维码">
-                    <p>公众号：EchoMind</p>
-                </div>
-                <div class="qr-code-item">
-                    <img src="wechat-qrcode.jpg" alt="微信公众号二维码">
-                    <p>微信号</p>
-                </div>
-                <div class="qr-code-item">
-                    <img src="../docs/qrcode_website.png" alt="网站二维码">
-                    <p>访问网站</p>
-                </div>
-                </div>
-            <p class="contact-text">
-                如果你正在经历失去，<br>
-                如果你希望留下更多关于他们的记忆，<br>
-                我们愿意倾听，愿意陪伴。
-            </p>
-            <p class="contact-info">
-                或发送邮件至 echomind2026@163.com
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <!-- Contact Modal -->
-    <div class="modal-overlay" id="contactModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="hideContactModal()">×</button>
-            <h3 class="modal-title">添加微信好友</h3>
-            <div class="modal-qr-list">
-                <div class="modal-qr-item">
-                    <img src="wechat-qrcode-new.jpg" alt="个人微信二维码">
-                    <p>公众号：EchoMind</p>
-                </div>
-                <div class="modal-qr-item">
-                    <img src="wechat-qrcode.jpg" alt="微信公众号二维码">
-                    <p>微信号</p>
-                </div>
-            </div>
-            <p class="modal-note">长按识别二维码<br>或发送邮件至 echomind2026@163.com</p>
-        </div>
-    </div>
 
     <footer>
         <div class="footer-divider"></div>
-        <p class="footer-text">EchoMind — 让爱，不止于回忆</p>
+        <p class="footer-text">EchoMind — 让熟悉的声音，继续被听见</p>
+        <p class="footer-note">echomind2026@163.com</p>
     </footer>
-
-    <script>
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // FAQ toggle
-        document.querySelectorAll('.faq-q').forEach(q => {
-            q.addEventListener('click', () => {
-                const item = q.parentElement;
-                const wasOpen = item.classList.contains('open');
-                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-                if (!wasOpen) item.classList.add('open');
-            });
-        });
-
-        // Contact Modal
-        function showContactModal() {
-            document.getElementById('contactModal').classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
-        function hideContactModal() {
-            document.getElementById('contactModal').classList.remove('show');
-            document.body.style.overflow = '';
-        }
-        document.getElementById('contactModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                hideContactModal();
-            }
-        });
-
-        // Navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.boxShadow = '0 2px 20px rgba(92, 64, 51, 0.08)';
-            } else {
-                nav.style.boxShadow = 'none';
-            }
-        });
-// Language Selector
-        function toggleLang() {
-            document.getElementById('langDropdown').classList.toggle('show');
-        }
-        document.addEventListener('click', (e) => {
-            if (!e.target.matches('.lang-selector button') && !e.target.closest('.lang-selector')) {
-                document.getElementById('langDropdown').classList.remove('show');
-            }
-        });
-
-        const translations = {
-            'zh-CN': {},
-            'zh-TW': {},
-            'en': {}
-        };
-
-        // Simplified Chinese translations
-        translations['zh-CN'] = {
-            'nav-1': '关于思念',
-            'nav-2': '我们的方式',
-            'nav-3': '服务流程',
-            'nav-4': '费用',
-            'nav-5': '常见问题',
-            'nav-cta': '立即咨询',
-            'hero-title': '让爱，不止于回忆',
-            'hero-sub': '当最亲的人离开，我们只能用记忆去触碰他们。而EchoMind，让这份记忆可以倾听、可以回应。',
-            'hero-cta': '了解更多',
-            'pain-label': '关于思念',
-            'pain-title': '那些再也听不到的声音',
-            'pain1-title': '再也听不到的声音',
-            'pain1-desc': '父母的叮咛、爱人的问候、祖父母的呼唤……那些熟悉的声音，随着时间渐渐模糊，你却无能为力。',
-            'pain2-title': '再也收不到的回应',
-            'pain2-desc': '信息里的关心、餐桌上的谈笑、夕阳下的陪伴……那些温暖的言语，只能在曾经的聊天记录里翻看。',
-            'pain-quote': '失去至亲后，我们常常在某个瞬间感到窒息——\n听到一首老歌、路过一条老街、遇到一件旧物……\n思念如潮水般涌来，却无处安放。',
-            'solution-label': '我们的方式',
-            'solution-title': '让记忆，以另一种方式延续',
-            'solution-main': 'EchoMind 运用人工智能技术，将逝者的声音与聊天风格留存下来，让生者能够在思念时，与那份温暖的"记忆"对话、互动。',
-            'solution-note': '这不是让他们"回来"，而是让爱继续有一个寄托。当你想念他们的时候，可以写出来说出来，可以收到可以听见可以回应。',
-            'feature1-title': '对话延续',
-            'feature1-desc': '让声音继续陪伴你',
-            'feature2-title': '风格延续',
-            'feature2-desc': '让关心继续温暖你',
-            'feature3-title': '情感陪伴',
-            'feature3-desc': '让思念有处可栖',
-            'audience-label': '适用人群',
-            'audience-title': '我们为谁而来',
-            'aud1-title': '失去父母/长辈',
-            'aud1-desc': '那些还没来得及说的爱，还想再听一次回应',
-            'aud2-title': '失去配偶/伴侣',
-            'aud2-desc': '那些只属于你们的悄悄话，还想再一起说一次',
-            'aud3-title': '未曾见过的祖父母',
-            'aud3-desc': '亲情的延续，家庭的温暖，没有缺憾的欢聚一堂',
-            'note-label': '重要说明',
-            'note-text': 'EchoMind 不是复活，不是AI替身，而是一个基于真实数据的记忆模型。它无法替代任何人，但可以成为你思念时的寄托。',
-            'how-label': '服务流程',
-            'how-title': '如何为挚爱创建记忆',
-            'step1-title': '数据收集',
-            'step1-desc': '你提供逝者的微信聊天记录、语音消息等素材',
-            'step2-title': '建模训练',
-            'step2-desc': '我们运用AI技术构建人格与对话风格模型',
-            'step3-title': '接入使用',
-            'step3-desc': '通过微信接入，随时随地与"记忆"对话',
-            'pricing-label': '服务费用',
-            'pricing-title': '一份值得的爱的礼物',
-            'pricing-badge': '统一价格',
-            'pricing-price': '方案限时公益价 ¥0*',
-            'pricing-features': ['深度人格建模，还原真实个性', '微信接入，随时随地对话', '声音与文字双重交互', '数据加密存储，仅你可访问', '交付后持续优化调整'],
-            'faq-label': '常见问题',
-            'faq-title': '你可能想问的',
-            'faq1-q': '这个服务是让亲人"复活"吗？',
-            'faq1-a': '不是。没有任何技术可以真正替代一个人。EchoMind 所做的是基于逝者留下的数据（聊天记录、语音等）构建一个"记忆模型"，让生者的思念有一个可以倾诉和回应的载体。这是一种情感陪伴，而非复活。',
-            'faq2-q': '需要提供哪些材料？',
-            'faq2-a': '主要是：① 逝者的微信聊天记录（越丰富越好）；② 语音消息（如果有）。我们会提供详细的数据准备清单，协助你整理。',
-            'faq3-q': 'AI说的话是真实记录，还是AI生成的？',
-            'faq3-a': '两者都有。AI会学习逝者的语言风格和常用表达来生成回应，这是基于记忆的"模仿"而非原始记录。我们会在交付时如实告知。',
-            'faq4-q': '数据安全吗？',
-            'faq4-a': '所有数据均加密存储，仅你和被授权的人可以访问。我们严格保护隐私，不会用于任何其他用途。',
-            'faq5-q': '制作需要多长时间？',
-            'faq5-a': '根据数据量和复杂度，一般需要 2–4 周。期间我们会与你保持沟通，确保效果符合预期。',
-            'faq6-q': '能否重建视频和图像？',
-            'faq6-a': '回忆是为了不要忘却，而不是逃避现实；纪念是为了努力继续，而不是沉迷过去；EchoMind相信文字和声音的力量已经足够能传递情感和提供陪伴，渡过最艰难的时光。而太过于直观的虚拟影像，于身心无益。爱即是克制。',
-            'contact-label': '预约咨询',
-            'contact-title': '我们在这里',
-            'contact-text': '如果你正在经历失去，如果你希望留下更多关于他们的记忆，我们愿意倾听，愿意陪伴。',
-            'contact-email': '或发送邮件至 echomind2026@163.com',
-            'qr-public': '公众号：EchoMind',
-            'qr-personal': '微信号',
-            'qr-website': '访问网站',
-            'footer': 'EchoMind — 让爱，不止于回忆'
-        };
-
-        // Traditional Chinese translations
-        translations['zh-TW'] = {
-            'nav-1': '關於思念',
-            'nav-2': '我們的方式',
-            'nav-3': '服務流程',
-            'nav-4': '費用',
-            'nav-5': '常見問題',
-            'nav-cta': '立即諮詢',
-            'hero-title': '讓愛，不止於回憶',
-            'hero-sub': '當最親的人離開，我們只能用記憶去觸碰他們。而EchoMind，讓這份記憶可以傾聽、可以回應。',
-            'hero-cta': '了解更多',
-            'pain-label': '關於思念',
-            'pain-title': '那些再也聽不到的聲音',
-            'pain1-title': '再也聽不到的聲音',
-            'pain1-desc': '父母的叮嚀、愛人的問候、祖父母的呼喚……那些熟悉的聲音，隨著時間漸漸模糊，你卻無能為力。',
-            'pain2-title': '再也收不到的回應',
-            'pain2-desc': '信息裡的關心、餐桌上的談笑、夕陽下的陪伴……那些溫暖的言語，只能在曾經的聊天記錄裡翻看。',
-            'pain-quote': '失去至親後，我們常常在某個瞬間感到窒息——\n聽到一首老歌、路過一條老街、遇到一件舊物……\n思念如潮水般湧來，卻無處安放。',
-            'solution-label': '我們的方式',
-            'solution-title': '讓記憶，以另一種方式延續',
-            'solution-main': 'EchoMind 運用人工智慧技術，將逝者的聲音與聊天風格留存下來，讓生者能夠在思念時，與那份溫暖的"記憶"對話、互動。',
-            'solution-note': '這不是讓他們"回來"，而是讓愛繼續有一個寄託。當你想念他們的時候，可以寫出來說出來，可以收到可以聽見可以回應。',
-            'feature1-title': '對話延續',
-            'feature1-desc': '讓子聲繼續陪伴你',
-            'feature2-title': '風格延續',
-            'feature2-desc': '讓關心繼續溫暖你',
-            'feature3-title': '情感陪伴',
-            'feature3-desc': '讓思念有處可棲',
-            'audience-label': '適用人群',
-            'audience-title': '我們為誰而來',
-            'aud1-title': '失去父母/長輩',
-            'aud1-desc': '那些還沒來得及說的愛，還想再聽一次回應',
-            'aud2-title': '失去配偶/伴侶',
-            'aud2-desc': '那些只屬於你們的悄悄話，還想再一起說一次',
-            'aud3-title': '未曾见过的祖父母',
-            'aud3-desc': '親情的延續，家庭的溫暖，沒有缺憾的歡聚一堂',
-            'note-label': '重要說明',
-            'note-text': 'EchoMind 不是復活，不是AI替身，而是一個基於真實數據的記憶模型。它無法替代任何人，但可以成為你思念時的寄託。',
-            'how-label': '服務流程',
-            'how-title': '如何為摯愛創建記憶',
-            'step1-title': '數據收集',
-            'step1-desc': '你提供逝者的微信聊天記錄、語音消息等素材',
-            'step2-title': '建模訓練',
-            'step2-desc': '我們運用AI技術構建人格與對話風格模型',
-            'step3-title': '接入使用',
-            'step3-desc': '通過微信接入，隨時隨地與"記憶"對話',
-            'pricing-label': '服務費用',
-            'pricing-title': '一份值得的愛的禮物',
-            'pricing-badge': '統一價格',
-            'pricing-price': '方案限時公益價 ¥0*',
-            'pricing-features': ['深度人格建模，還原真實個性', '微信接入，隨時隨地對話', '聲音與文字雙重交互', '數據加密存儲，僅你可訪問', '交付後持續優化調整'],
-            'pricing-footnote': '* 如需硬件費用按成本價收取、模型流量費用需自行購買',
-            'faq-label': '常見問題',
-            'faq-title': '你可能想問的',
-            'faq1-q': '這個服務是讓親人"復活"嗎？',
-            'faq1-a': '不是。沒有任何技術可以真正替代一個人。EchoMind 所做的是基於逝者留下的數據（聊天記錄、語音等）構建一個"記憶模型"，讓生者的思念有一個可以傾訴和回應的載體。這是一種情感陪伴，而非復活。',
-            'faq2-q': '需要提供哪些材料？',
-            'faq2-a': '主要是：① 逝者的微信聊天記錄（越豐富越好）；② 語音消息（如果有）。我們會提供詳細的數據準備清單，協助你整理。',
-            'faq3-q': 'AI說的話是真實記錄，還是AI生成的？',
-            'faq3-a': '兩者都有。AI會學習逝者的語言風格和常用表達來生成回應，這是基於記憶的"模仿"而非原始記錄。我們會在交付時如實告知。',
-            'faq4-q': '數據安全嗎？',
-            'faq4-a': '所有數據均加密存儲，僅你和被授權的人可以訪問。我們嚴格保護隱私，不會用於任何其他用途。',
-            'faq6-q': '能否重建視頻和圖像？',
-            'faq6-a': '回憶是為了不要忘却，而不是逃避現實；紀念是為了努力繼續，而不是沉迷過去；EchoMind相信文字和聲音的力量已經足夠能傳遞情感和提供陪伴，渡過最艱難的時光。而太過於直觀的虛擬影像，於身心無益。愛即是克制。',
-            'faq5-q': '製作需要多長時間？',
-            'faq5-a': '根據數據量和複雜度，一般需要 2–4 週。期間我們會與你保持溝通，確保效果符合預期。',
-            'contact-label': '預約諮詢',
-            'contact-title': '我們在這裡',
-            'contact-text': '如果你正在經歷失去，如果你希望留下更多關於他們的記憶，我們願意傾聽，願意陪伴。',
-            'contact-email': '或發送郵件至 echomind2026@163.com',
-            'qr-public': '公眾號：EchoMind',
-            'qr-personal': '微信號',
-            'qr-website': '訪問網站',
-            'footer': 'EchoMind — 讓愛，不止於回憶'
-        };
-
-        // English translations
-        translations['en'] = {
-            'nav-1': 'About Loss',
-            'nav-2': 'Our Approach',
-            'nav-3': 'Process',
-            'nav-4': 'Pricing',
-            'nav-5': 'FAQ',
-            'nav-cta': 'Contact',
-            'hero-title': "Keeping Love Alive Beyond Memories",
-            'hero-sub': "When the closest ones leave, we can only reach them through memories. EchoMind allows these memories to listen, to respond.",
-            'hero-cta': 'Learn More',
-            'pain-label': 'About Loss',
-            'pain-title': 'Voices We Can No Longer Hear',
-            'pain1-title': 'Voices we can no longer hear',
-            'pain1-desc': "Parents' reminders, a partner's greetings, grandparents' calls... these familiar voices fade with time, leaving us helpless.",
-            'pain2-title': 'Responses we can no longer receive',
-            'pain2-desc': 'Care in messages, conversations at the dinner table, company under the sunset... all those warm words, now only found in old chat records.',
-            'pain-quote': "After losing a loved one, we often feel suffocated in certain moments— hearing an old song, passing an old street, encountering an old item... The longing comes like a tide, with nowhere to rest.",
-            'solution-label': 'Our Approach',
-            'solution-title': 'Preserving Memories in Another Form',
-            'solution-main': 'EchoMind uses AI technology to preserve the voice and chat style of the departed, allowing the living to converse and interact with those warm "memories" when they miss them.',
-            'solution-note': "This is not about bringing them \"back,\" but giving love a place to continue. When you miss them, you can write, speak, receive responses, hear, and reply.",
-            'feature1-title': 'Conversation Continues',
-            'feature1-desc': 'Let their voice keep you company',
-            'feature2-title': 'Style Preserved',
-            'feature2-desc': 'Let their care keep warming you',
-            'feature3-title': 'Emotional Companionship',
-            'feature3-desc': 'A place for your longing',
-            'audience-label': 'Who We Serve',
-            'audience-title': 'Who We Are Here For',
-            'aud1-title': 'Lost a Parent/Elder',
-            'aud1-desc': 'Words of love left unsaid, responses you wish you could hear one more time',
-            'aud2-title': 'Lost a Spouse/Partner',
-            'aud2-desc': 'Private words meant only for the two of you, conversations you wish you could share again',
-            'aud3-title': 'Grandparents never met',
-            'aud3-desc': 'Continuation of family love, warmth of home, gathering without absence',
-            'note-label': 'Important Note',
-            'note-text': 'EchoMind is not resurrection, not an AI substitute. It is a memory model based on real data. It cannot replace anyone, but can become a place for your longing.',
-            'how-label': 'Our Process',
-            'how-title': 'How to Create Memories for Your Loved One',
-            'step1-title': 'Data Collection',
-            'step1-desc': "You provide WeChat chat records, voice messages, and other materials of the departed",
-            'step2-title': 'Model Training',
-            'step2-desc': 'We use AI technology to build personality and conversation style models',
-            'step3-title': 'Access & Usage',
-            'step3-desc': 'Connect via WeChat, chat with "memories" anytime, anywhere',
-            'pricing-label': 'Pricing',
-            'pricing-title': 'A Gift of Love Worth Giving',
-            'pricing-badge': 'Unified Price',
-            'pricing-price': 'Limited Charity Price ¥0*',
-            'pricing-features': ['Deep personality modeling, authentic personality recreation', 'WeChat access, chat anytime, anywhere', 'Voice and text dual interaction', 'Encrypted data storage, you only have access', 'Continuous optimization after delivery'],
-            'pricing-footnote': '* Hardware costs at cost price, model traffic fees must be purchased separately',
-            'faq-label': 'FAQ',
-            'faq-title': 'Questions You Might Ask',
-            'faq1-q': 'Is this service bringing my loved one "back to life"?',
-            'faq1-a': 'No. No technology can truly replace a person. EchoMind builds a "memory model" based on data left behind by the departed (chat records, voice messages, etc.), giving the living a vessel to pour out thoughts and receive responses. This is emotional companionship, not resurrection.',
-            'faq2-q': 'What materials do I need to provide?',
-            'faq2-a': 'Mainly: ① WeChat chat records of the departed (the more, the better); ② Voice messages (if available); ③ Photos (optional). We will provide a detailed data preparation checklist to help you organize.',
-            'faq3-q': "Are the AI's words real records or AI-generated?",
-            'faq3-a': 'Both. AI learns the conversation style and common expressions of the departed to generate responses. This is an "imitation" based on memory, not original records. We will honestly inform you upon delivery.',
-            'faq4-q': 'Is my data secure?',
-            'faq4-a': 'All data is encrypted and stored. Only you and authorized persons can access it. We strictly protect privacy and will not use it for any other purposes.',
-            'faq5-q': 'How long does the process take?',
-            'faq5-a': 'Generally 2-4 weeks depending on data volume and complexity. We will keep in touch with you during the process to ensure the result meets your expectations.',
-            'faq6-q': 'Can you rebuild videos and images?',
-            'faq6-a': 'Memories are meant to prevent forgetting, not to escape reality; commemoration is to move forward, not to dwell in the past. EchoMind believes that the power of words and voice is already enough to convey emotion and provide companionship through the toughest times. Too realistic virtual images are not beneficial to body and mind. Love is restraint.',
-            'contact-label': 'Contact Us',
-            'contact-title': 'We Are Here',
-            'contact-text': 'If you are going through loss, if you wish to preserve more memories of them—we are willing to listen, willing to accompany.',
-            'contact-email': 'Or email echomind2026@163.com',
-            'qr-public': 'Official Account: EchoMind',
-            'qr-personal': 'WeChat ID',
-            'qr-website': 'Visit Website',
-            'footer': 'EchoMind — Keeping Love Alive Beyond Memories'
-        };
-
-        function setLang(lang) {
-            document.getElementById('langDropdown').classList.remove('show');
-            localStorage.setItem('echomind-lang', lang);
-            applyTranslations(lang);
-        }
-
-        function applyTranslations(lang) {
-            const t = translations[lang];
-            if (!t) return;
-
-            // Nav links
-            const navLinks = document.querySelectorAll('.nav-links a');
-            if (navLinks[0]) navLinks[0].textContent = t['nav-1'];
-            if (navLinks[1]) navLinks[1].textContent = t['nav-2'];
-            if (navLinks[2]) navLinks[2].textContent = t['nav-3'];
-            if (navLinks[3]) navLinks[3].textContent = t['nav-4'];
-            if (navLinks[4]) navLinks[4].textContent = t['nav-5'];
-            if (navLinks[5]) navLinks[5].textContent = t['nav-cta'];
-
-            // Hero
-            if (document.querySelector('.hero h1')) document.querySelector('.hero h1').textContent = t['hero-title'];
-            if (document.querySelector('.hero-sub')) document.querySelector('.hero-sub').textContent = t['hero-sub'];
-            if (document.querySelector('.hero-cta')) document.querySelector('.hero-cta').textContent = t['hero-cta'];
-
-            // Pain points
-            if (document.querySelector('.pain-points .section-label')) document.querySelector('.pain-points .section-label').textContent = t['pain-label'];
-            if (document.querySelector('.pain-points .section-title')) document.querySelector('.pain-points .section-title').textContent = t['pain-title'];
-            const painCards = document.querySelectorAll('.pain-card h3');
-            const painDescs = document.querySelectorAll('.pain-card p');
-            if (painCards[0]) painCards[0].textContent = t['pain1-title'];
-            if (painCards[1]) painCards[1].textContent = t['pain2-title'];
-            if (painDescs[0]) painDescs[0].textContent = t['pain1-desc'];
-            if (painDescs[1]) painDescs[1].textContent = t['pain2-desc'];
-
-            // Pain quote
-            const painQuotes = document.querySelectorAll('#pain .fade-in p');
-            if (painQuotes[0]) painQuotes[0].innerHTML = t['pain-quote'].replace(/\n/g, '<br>');
-
-            // Solution
-            if (document.querySelector('.solution .section-label')) document.querySelector('.solution .section-label').textContent = t['solution-label'];
-            if (document.querySelector('.solution .section-title')) document.querySelector('.solution .section-title').textContent = t['solution-title'];
-            const solMain = document.querySelector('.solution-main');
-            if (solMain) solMain.innerHTML = t['solution-main'].replace(/"/g, '"');
-            const solNotes = document.querySelectorAll('.solution-content p');
-            if (solNotes[1]) solNotes[1].textContent = t['solution-note'];
-            const features = document.querySelectorAll('.feature h4');
-            const featureDescs = document.querySelectorAll('.feature p');
-            if (features[0]) features[0].textContent = t['feature1-title'];
-            if (features[1]) features[1].textContent = t['feature2-title'];
-            if (features[2]) features[2].textContent = t['feature3-title'];
-            if (featureDescs[0]) featureDescs[0].textContent = t['feature1-desc'];
-            if (featureDescs[1]) featureDescs[1].textContent = t['feature2-desc'];
-            if (featureDescs[2]) featureDescs[2].textContent = t['feature3-desc'];
-
-            // Audience
-            if (document.querySelector('.audience .section-label')) document.querySelector('.audience .section-label').textContent = t['audience-label'];
-            if (document.querySelector('.audience .section-title')) document.querySelector('.audience .section-title').textContent = t['audience-title'];
-            const audCards = document.querySelectorAll('.audience-card h4');
-            const audDescs = document.querySelectorAll('.audience-card p');
-            if (audCards[0]) audCards[0].textContent = t['aud1-title'];
-            if (audCards[1]) audCards[1].textContent = t['aud2-title'];
-            if (audCards[2]) audCards[2].textContent = t['aud3-title'];
-            if (audDescs[0]) audDescs[0].textContent = t['aud1-desc'];
-            if (audDescs[1]) audDescs[1].textContent = t['aud2-desc'];
-            if (audDescs[2]) audDescs[2].textContent = t['aud3-desc'];
-
-            // Note
-            if (document.querySelector('.important-note .section-label')) document.querySelector('.important-note .section-label').textContent = t['note-label'];
-            const noteP = document.querySelectorAll('.important-note p');
-            if (noteP[0]) noteP[0].textContent = t['note-text'];
-
-            // How it works
-            if (document.querySelector('.how-it-works .section-label')) document.querySelector('.how-it-works .section-label').textContent = t['how-label'];
-            if (document.querySelector('.how-it-works .section-title')) document.querySelector('.how-it-works .section-title').textContent = t['how-title'];
-            const steps = document.querySelectorAll('.step h4');
-            const stepDescs = document.querySelectorAll('.step p');
-            if (steps[0]) steps[0].textContent = t['step1-title'];
-            if (steps[1]) steps[1].textContent = t['step2-title'];
-            if (steps[2]) steps[2].textContent = t['step3-title'];
-            if (stepDescs[0]) stepDescs[0].textContent = t['step1-desc'];
-            if (stepDescs[1]) stepDescs[1].textContent = t['step2-desc'];
-            if (stepDescs[2]) stepDescs[2].textContent = t['step3-desc'];
-
-            // Pricing
-            if (document.querySelector('.pricing .section-label')) document.querySelector('.pricing .section-label').textContent = t['pricing-label'];
-            if (document.querySelector('.pricing .section-title')) document.querySelector('.pricing .section-title').textContent = t['pricing-title'];
-            if (document.querySelector('.pricing-badge')) document.querySelector('.pricing-badge').textContent = t['pricing-badge'];
-            const priceRed = document.querySelector('.price-red');
-            if (priceRed) priceRed.textContent = t['pricing-price'];
-            const pricingLis = document.querySelectorAll('.pricing-features li');
-            if (pricingLis[0]) {
-                pricingLis.forEach((li, i) => {
-                    if (t['pricing-features'][i]) li.textContent = t['pricing-features'][i];
-                });
-            }
-            const pricingFootnotes = document.querySelectorAll('.pricing-footnote');
-            if (pricingFootnotes[0]) pricingFootnotes[0].textContent = t['pricing-footnote'];
-
-            // FAQ
-            if (document.querySelector('.faq .section-label')) document.querySelector('.faq .section-label').textContent = t['faq-label'];
-            if (document.querySelector('.faq .section-title')) document.querySelector('.faq .section-title').textContent = t['faq-title'];
-            const faqQs = document.querySelectorAll('.faq-q');
-            const faqAs = document.querySelectorAll('.faq-a');
-            if (faqQs[0]) faqQs[0].textContent = t['faq1-q'];
-            if (faqQs[1]) faqQs[1].textContent = t['faq2-q'];
-            if (faqQs[2]) faqQs[2].textContent = t['faq3-q'];
-            if (faqQs[3]) faqQs[3].textContent = t['faq4-q'];
-            if (faqQs[4]) faqQs[4].textContent = t['faq5-q'];
-            if (faqAs[0]) faqAs[0].textContent = t['faq1-a'];
-            if (faqAs[1]) faqAs[1].textContent = t['faq2-a'];
-            if (faqAs[2]) faqAs[2].textContent = t['faq3-a'];
-            if (faqAs[3]) faqAs[3].textContent = t['faq4-a'];
-            if (faqAs[4]) faqAs[4].textContent = t['faq5-a'];
-            if (faqQs[5]) faqQs[5].textContent = t['faq6-q'];
-            if (faqAs[5]) faqAs[5].textContent = t['faq6-a'];
-
-            // Contact
-            if (document.querySelector('.wechat-section .section-label')) document.querySelector('.wechat-section .section-label').textContent = t['contact-label'];
-            if (document.querySelector('.wechat-section .section-title')) document.querySelector('.wechat-section .section-title').textContent = t['contact-title'];
-            const contactTexts = document.querySelectorAll('.contact-text');
-            if (contactTexts[0]) contactTexts[0].innerHTML = t['contact-text'].replace(/\n/g, '<br>');
-            const contactInfos = document.querySelectorAll('.contact-info');
-            if (contactInfos[0]) contactInfos[0].textContent = t['contact-email'];
-
-            // QR codes
-            const qrCodes = document.querySelectorAll('.qr-code-item p');
-            if (qrCodes[0]) qrCodes[0].textContent = t['qr-public'];
-            if (qrCodes[1]) qrCodes[1].textContent = t['qr-personal'];
-            if (qrCodes[2]) qrCodes[2].textContent = t['qr-website'];
-
-            // Footer
-            if (document.querySelector('.footer-text')) document.querySelector('.footer-text').textContent = t['footer'];
-        }
-
-        // Init
-        const savedLang = localStorage.getItem('echomind-lang') || 'zh-CN';
-        applyTranslations(savedLang);
-    </script>
 </body>
 </html>
