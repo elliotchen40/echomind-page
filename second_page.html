@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EchoMind — 让熟悉的声音，成为一种支持。通过记录与建模，把父母的声音与表达方式转化为可使用的资源。">
+    <meta name="keywords" content="EchoMind,声音保存,自闭症,语言障碍,熟悉的声音,AI辅助,特殊儿童">
+    <meta property="og:title" content="EchoMind — 让熟悉的声音，成为一种支持">
+    <meta property="og:description" content="让熟悉的声音，被保留下来，并在需要的时候出现">
+    <meta property="og:type" content="website">
+    <title>EchoMind — 让熟悉的声音，成为一种支持</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --warm-beige: #F5EDE3;
+            --light-gold: #D4B896;
+            --soft-gold: #E8D5B5;
+            --light-gray: #A8A29E;
+            --soft-gray: #E8E4E0;
+            --deep-brown: #5C4033;
+            --warm-white: #FDFBF7;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', serif;
+            background-color: var(--warm-white);
+            color: var(--deep-brown);
+            line-height: 1.8;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(253, 251, 247, 0.98);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 184, 150, 0.15);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--deep-brown);
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            margin-left: 40px;
+            text-decoration: none;
+            color: var(--deep-brown);
+            font-size: 0.95rem;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(165deg, var(--warm-beige) 0%, var(--soft-gold) 50%, var(--warm-beige) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(212, 184, 150, 0.3) 0%, transparent 40%);
+            animation: gentleShift 20s ease-in-out infinite;
+        }
+
+        @keyframes gentleShift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(2%, 1%) rotate(1deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 40px;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: var(--light-gold);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.3s forwards;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--deep-brown);
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.6s forwards;
+            letter-spacing: 6px;
+        }
+
+        .hero-sub {
+            font-size: 1.2rem;
+            color: var(--light-gray);
+            max-width: 550px;
+            margin: 0 auto 50px;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.9s forwards;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeUp 1s ease 1.5s forwards, float 3s ease-in-out infinite 2.5s;
+        }
+
+        .scroll-hint::before {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--light-gold), transparent);
+            margin: 0 auto;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        section {
+            padding: 120px 60px;
+        }
+
+        .section-label {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--light-gold);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: var(--deep-brown);
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .opening {
+            background: var(--warm-white);
+            text-align: center;
+        }
+
+        .opening-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .opening-main {
+            font-size: 1.5rem;
+            color: var(--deep-brown);
+            line-height: 2.2;
+            margin-bottom: 30px;
+        }
+
+        .challenge {
+            background: linear-gradient(180deg, var(--warm-white) 0%, var(--soft-gray) 100%);
+        }
+
+        .challenge-intro {
+            max-width: 700px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+
+        .challenge-intro h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--deep-brown);
+            line-height: 2;
+        }
+
+        .challenge-list {
+            max-width: 600px;
+            margin: 0 auto;
+            list-style: none;
+        }
+
+        .challenge-list li {
+            background: var(--warm-white);
+            padding: 25px 30px;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: var(--deep-brown);
+            box-shadow: 0 4px 20px rgba(92, 64, 51, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .challenge-list li:hover {
+            transform: translateX(10px);
+        }
+
+        .challenge-list li::before {
+            content: '·';
+            color: var(--light-gold);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+
+        .insight {
+            background: linear-gradient(135deg, var(--warm-beige), var(--soft-gold));
+            text-align: center;
+        }
+
+        .insight-content {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .insight-main {
+            font-size: 1.3rem;
+            color: var(--deep-brown);
+            margin-bottom: 20px;
+            line-height: 2;
+        }
+
+        .insight-quote {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 30px 40px;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            color: var(--deep-brown);
+            font-weight: 500;
+            margin-top: 30px;
+        }
+
+        .insight-quote strong {
+            color: var(--light-gold);
+        }
+
+        .reality {
+            background: linear-gradient(180deg, var(--soft-gray) 0%, var(--warm-beige) 100%);
+        }
+
+        .reality-intro {
+            max-width: 600px;
+            margin: 0 auto 50px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            line-height: 2;
+        }
+
+        .reality-grid {
+            max-width: 700px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .reality-card {
+            background: var(--warm-white);
+            padding: 35px 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(92, 64, 51, 0.06);
+            transition: transform 0.4s ease;
+        }
+
+        .reality-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .reality-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--soft-gold), var(--warm-beige));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .reality-card p {
+            font-size: 0.95rem;
+            color: var(--light-gray);
+            line-height: 1.8;
+        }
+
+        .future-question {
+            background: var(--warm-white);
+            text-align: center;
+        }
+
+        .future-content {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .future-text {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            line-height: 2;
+            margin-bottom: 40px;
+        }
+
+        .future-quote {
+            background: linear-gradient(135deg, var(--warm-beige), var(--soft-gold));
+            padding: 40px 50px;
+            border-radius: 24px;
+            font-size: 1.15rem;
+            color: var(--deep-brown);
+            line-height: 2;
+        }
+
+        .future-quote strong {
+            display: block;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--deep-brown);
+        }
+
+        .mission {
+            background: linear-gradient(180deg, var(--warm-beige) 0%, var(--soft-gold) 100%);
+            text-align: center;
+        }
+
+        .mission-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .mission-not {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            margin-bottom: 40px;
+            line-height: 2;
+        }
+
+        .mission-not span {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        .mission-but {
+            font-size: 1.3rem;
+            color: var(--deep-brown);
+            margin-bottom: 30px;
+        }
+
+        .mission-goal {
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--deep-brown);
+            line-height: 1.6;
+            padding: 30px 40px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+        }
+
+        .mission-goal strong {
+            color: var(--light-gold);
+            font-weight: 600;
+        }
+
+        .solution {
+            background: var(--warm-white);
+            text-align: center;
+        }
+
+        .solution-intro {
+            max-width: 650px;
+            margin: 0 auto 50px;
+        }
+
+        .solution-intro h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--deep-brown);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .solution-intro p {
+            font-size: 1rem;
+            color: var(--light-gray);
+            line-height: 2;
+        }
+
+        .solution-features {
+            max-width: 800px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--warm-white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(92, 64, 51, 0.06);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(92, 64, 51, 0.1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, var(--soft-gold), var(--warm-beige));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .feature-card h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--deep-brown);
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--light-gray);
+            line-height: 1.8;
+        }
+
+        .philosophy {
+            background: linear-gradient(180deg, var(--soft-gray) 0%, var(--warm-beige) 100%);
+            text-align: center;
+        }
+
+        .philosophy-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .philosophy-card {
+            background: var(--warm-white);
+            padding: 50px 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(92, 64, 51, 0.06);
+        }
+
+        .philosophy-card h4 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--deep-brown);
+            margin-bottom: 15px;
+        }
+
+        .philosophy-card p {
+            font-size: 1rem;
+            color: var(--light-gray);
+            line-height: 2;
+        }
+
+        .support {
+            background: linear-gradient(135deg, var(--warm-beige), var(--soft-gold));
+            text-align: center;
+        }
+
+        .support-content {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .support-main {
+            font-size: 1.4rem;
+            color: var(--deep-brown);
+            line-height: 2;
+            margin-bottom: 30px;
+        }
+
+        .support-goal {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 30px 40px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            color: var(--deep-brown);
+            line-height: 2;
+        }
+
+        .closing {
+            background: var(--warm-white);
+            text-align: center;
+        }
+
+        .closing-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .closing h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--deep-brown);
+            margin-bottom: 30px;
+            letter-spacing: 6px;
+        }
+
+        .closing-main {
+            font-size: 1.3rem;
+            color: var(--light-gray);
+            line-height: 2;
+            margin-bottom: 40px;
+        }
+
+        .closing-quote {
+            font-size: 1.2rem;
+            color: var(--deep-brown);
+            line-height: 2;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--warm-beige), var(--soft-gold));
+            border-radius: 24px;
+        }
+
+        .final-cta {
+            background: linear-gradient(180deg, var(--warm-beige) 0%, var(--soft-gold) 100%);
+            text-align: center;
+        }
+
+        .final-cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--deep-brown);
+            margin-bottom: 30px;
+            letter-spacing: 6px;
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            color: var(--deep-brown);
+            opacity: 0.8;
+            line-height: 2;
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            background: var(--warm-white);
+        }
+
+        .footer-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--light-gold);
+            margin: 0 auto 20px;
+            opacity: 0.5;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: var(--light-gray);
+            letter-spacing: 1px;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 30px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                letter-spacing: 3px;
+            }
+
+            section {
+                padding: 80px 30px;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+                margin-bottom: 40px;
+            }
+
+            .reality-grid,
+            .solution-features,
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .challenge-list li {
+                font-size: 0.95rem;
+                padding: 20px 25px;
+            }
+
+            .closing h2,
+            .final-cta h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">EchoMind</div>
+        <div class="nav-links">
+            <a href="#challenge">他们在面对什么</a>
+            <a href="#reality">现实的限制</a>
+            <a href="#solution">EchoMind能做什么</a>
+            <a href="#closing">关于连接</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-tagline">EchoMind</p>
+            <h1>让熟悉的声音，成为一种支持</h1>
+            <p class="hero-sub">对于一些孩子来说，语言不是表达的工具，而是一种困难。EchoMind 尝试用另一种方式，提供支持。</p>
+        </div>
+        <div class="scroll-hint"></div>
+    </section>
+
+    <section class="opening" id="opening">
+        <div class="opening-content fade-in">
+            <p class="section-label">问题的另一面</p>
+            <h2 class="section-title">有些沟通，并不是"不会说"</h2>
+            <p class="opening-main">
+                而是——<br>
+                这个世界的声音，对他们来说太陌生了
+            </p>
+        </div>
+    </section>
+
+    <section class="challenge" id="challenge">
+        <div class="challenge-intro fade-in">
+            <p class="section-label">理解他们的世界</p>
+            <h2 class="section-title">他们在面对什么</h2>
+            <h3>对于一些孩子来说，<br>语言不是表达的工具<br>而是一种困难</h3>
+        </div>
+        <ul class="challenge-list fade-in">
+            <li>听不进去陌生人的指令</li>
+            <li>对环境变化非常敏感</li>
+            <li>在情绪波动时难以被安抚</li>
+            <li>明明能理解，却无法回应</li>
+        </ul>
+    </section>
+
+    <section class="insight" id="insight">
+        <div class="insight-content fade-in">
+            <p class="section-label" style="color: var(--deep-brown); opacity: 0.7;">关键洞察</p>
+            <p class="insight-main">
+                很多训练方法，本身没有问题<br>
+                但问题在于——
+            </p>
+            <div class="insight-quote">
+                这些声音，并不是他们<strong>熟悉的声音</strong>
+            </div>
+        </div>
+    </section>
+
+    <section class="reality" id="reality">
+        <div class="reality-intro fade-in">
+            <p class="section-label">现实的考量</p>
+            <h2 class="section-title">更难的是，现实的限制</h2>
+            <p>并不是每一位父母，都能一直陪在孩子身边</p>
+        </div>
+        <div class="reality-grid fade-in">
+            <div class="reality-card">
+                <div class="reality-icon">&#128188;</div>
+                <p>有的家庭，需要工作维持生活</p>
+            </div>
+            <div class="reality-card">
+                <div class="reality-icon">&#128149;</div>
+                <p>有的家长，无法长期全职陪伴</p>
+            </div>
+            <div class="reality-card">
+                <div class="reality-icon">&#128107;</div>
+                <p>有的时间点，孩子必须独自面对环境</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="future-question" id="future">
+        <div class="future-content fade-in">
+            <p class="section-label">更长远的思考</p>
+            <h2 class="section-title">而在更长远的未来</h2>
+            <p class="future-text">
+                还有一个几乎没人愿意面对的问题：
+            </p>
+            <div class="future-quote">
+                <strong>如果有一天，父母不在了</strong>
+                谁还能用他们熟悉的方式，<br>继续陪伴他们？
+            </div>
+        </div>
+    </section>
+
+    <section class="mission" id="mission">
+        <div class="mission-content fade-in">
+            <p class="section-label">我们的出发点</p>
+            <h2 class="section-title">我们在尝试解决一件具体的事情</h2>
+            <p class="mission-not">
+                <span>不是改变他们</span><br>
+                <span>也不是替代任何人</span>
+            </p>
+            <p class="mission-but">而是：</p>
+            <div class="mission-goal">
+                让"<strong>熟悉的声音</strong>"，可以被保留下来，<br>并在需要的时候出现
+            </div>
+        </div>
+    </section>
+
+    <section class="solution" id="solution">
+        <div class="solution-intro fade-in">
+            <p class="section-label">解决方案</p>
+            <h2 class="section-title">EchoMind 能做什么</h2>
+            <h3>通过记录与建模，<br>把父母的声音与表达方式<br>转化为一种可使用的资源</h3>
+            <p>在不同的场景中：</p>
+        </div>
+        <div class="solution-features fade-in">
+            <div class="feature-card">
+                <div class="feature-icon">&#127911;</div>
+                <h4>引导日常行为</h4>
+                <p>用熟悉的语气，引导日常行为</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128172;</div>
+                <h4>简单沟通</h4>
+                <p>用习惯的表达，进行简单沟通</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128150;</div>
+                <h4>情绪安抚</h4>
+                <p>在情绪波动时，提供更容易被接受的安抚</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="philosophy" id="philosophy">
+        <div class="philosophy-grid fade-in">
+            <div class="philosophy-card">
+                <h4>这不是替代</h4>
+                <p>也不是让他们依赖某种系统</p>
+            </div>
+            <div class="philosophy-card">
+                <h4>而是一种支持</h4>
+                <p>在现实无法覆盖的时刻，依然可以被触达的支持</p>
+            </div>
+        </div>
+        <div class="insight-content fade-in" style="margin-top: 60px;">
+            <div class="insight-quote" style="background: rgba(255, 255, 255, 0.7);">
+                不是增加新的刺激<br>而是<strong>使用他们已经信任的那一部分世界</strong>
+            </div>
+        </div>
+    </section>
+
+    <section class="closing" id="closing">
+        <div class="closing-content fade-in">
+            <p class="section-label">核心理念</p>
+            <h2>有些连接，不应该被中断</h2>
+            <p class="closing-main">
+                即使时间、距离，甚至生命发生变化
+            </p>
+            <div class="closing-quote">
+                那些熟悉的声音<br>依然可以，以另一种方式存在
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="final-cta-content fade-in">
+            <h2>EchoMind</h2>
+            <p>让熟悉的声音，继续被听见</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-divider"></div>
+        <p class="footer-text">EchoMind — 让熟悉的声音，成为一种支持</p>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 2px 20px rgba(92, 64, 51, 0.08)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

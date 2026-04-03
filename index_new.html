@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EchoMind — 让爱与声音得以延续。AI记忆保存与特殊儿童支持，用熟悉的声音提供陪伴与温暖。">
+    <meta name="keywords" content="EchoMind,AI纪念,声音保存,记忆延续,特殊儿童支持">
+    <meta property="og:title" content="EchoMind — 让熟悉的声音，继续被听见">
+    <meta property="og:description" content="选择您的需求，开启专属的记忆之旅">
+    <meta property="og:type" content="website">
+    <title>EchoMind — 让熟悉的声音，继续被听见</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --warm-beige: #F5EDE3;
+            --light-gold: #D4B896;
+            --soft-gold: #E8D5B5;
+            --light-gray: #A8A29E;
+            --soft-gray: #E8E4E0;
+            --deep-brown: #5C4033;
+            --warm-white: #FDFBF7;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', serif;
+            background-color: var(--warm-white);
+            color: var(--deep-brown);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(253, 251, 247, 0.98);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 184, 150, 0.15);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--deep-brown);
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            margin-left: 40px;
+            text-decoration: none;
+            color: var(--deep-brown);
+            font-size: 0.95rem;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(165deg, var(--warm-beige) 0%, var(--soft-gold) 50%, var(--warm-beige) 100%);
+            padding: 120px 60px 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(212, 184, 150, 0.3) 0%, transparent 40%);
+            animation: gentleShift 20s ease-in-out infinite;
+        }
+
+        @keyframes gentleShift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(2%, 1%) rotate(1deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero-tagline {
+            font-size: 1rem;
+            color: var(--light-gold);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.3s forwards;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--deep-brown);
+            margin-bottom: 25px;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.5s forwards;
+            letter-spacing: 6px;
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--light-gray);
+            max-width: 550px;
+            margin: 0 auto 60px;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.7s forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Selection Cards */
+        .selection-wrapper {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 900px;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.9s forwards;
+        }
+
+        .selection-label {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--light-gold);
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+        }
+
+        .selection-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .selection-card {
+            background: var(--warm-white);
+            border-radius: 24px;
+            padding: 50px 40px;
+            text-decoration: none;
+            color: var(--deep-brown);
+            box-shadow: 0 15px 50px rgba(92, 64, 51, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .selection-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--light-gold), var(--soft-gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .selection-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .selection-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(92, 64, 51, 0.15);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, var(--soft-gold), var(--warm-beige));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+        }
+
+        .card-label {
+            font-size: 0.75rem;
+            color: var(--light-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--deep-brown);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--light-gray);
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        .card-features {
+            list-style: none;
+            text-align: left;
+        }
+
+        .card-features li {
+            font-size: 0.88rem;
+            color: var(--light-gray);
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-features li::before {
+            content: '·';
+            color: var(--light-gold);
+            font-size: 1.3rem;
+        }
+
+        .card-arrow {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--soft-gold), var(--warm-beige));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .selection-card:hover .card-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px;
+            text-align: center;
+            background: var(--warm-white);
+        }
+
+        .footer-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--light-gold);
+            margin: 0 auto 20px;
+            opacity: 0.5;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: var(--light-gray);
+            letter-spacing: 1px;
+        }
+
+        .footer-note {
+            font-size: 0.75rem;
+            color: var(--light-gray);
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 30px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 100px 30px 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                letter-spacing: 3px;
+            }
+
+            .hero-sub {
+                font-size: 1rem;
+            }
+
+            .selection-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .selection-card {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">EchoMind</div>
+        <div class="nav-links">
+            <a href="#memorial">AI纪念</a>
+            <a href="#support">特殊支持</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-tagline">AI MEMORY & SUPPORT</p>
+            <h1>让熟悉的声音，继续被听见</h1>
+            <p class="hero-sub">我们用人工智能技术，让爱与声音以另一种方式延续。无论您是希望保留珍贵的记忆，还是需要为孩子提供更温暖的支持，EchoMind都在这里。</p>
+        </div>
+
+        <div class="selection-wrapper">
+            <p class="selection-label">请选择您的需求</p>
+            <div class="selection-grid">
+                <!-- Memorial Card -->
+                <a href="../homepage/index.html" class="selection-card" id="memorial">
+                    <div class="card-icon">&#128156;</div>
+                    <p class="card-label">AI纪念</p>
+                    <h3 class="card-title">让爱，不止于回忆</h3>
+                    <p class="card-desc">当最亲的人离开，我们用AI技术保存他们的声音与言语风格，让爱可以在思念时继续被听见、被回应。</p>
+                    <ul class="card-features">
+                        <li>声音与聊天风格留存</li>
+                        <li>微信接入，随时对话</li>
+                        <li>克制的情感陪伴</li>
+                    </ul>
+                    <div class="card-arrow">&#10148;</div>
+                </a>
+
+                <!-- Support Card -->
+                <a href="../second_page/index.html" class="selection-card" id="support">
+                    <div class="card-icon">&#128147;</div>
+                    <p class="card-label">特殊支持</p>
+                    <h3 class="card-title">让熟悉的声音，成为一种支持</h3>
+                    <p class="card-desc">对于一些孩子来说，这个世界的声音太陌生。我们用父母熟悉的声音与表达方式，在需要的时候提供支持与陪伴。</p>
+                    <ul class="card-features">
+                        <li>熟悉声音的记录与建模</li>
+                        <li>日常行为引导与情绪安抚</li>
+                        <li>用他们信任的方式沟通</li>
+                    </ul>
+                    <div class="card-arrow">&#10148;</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-divider"></div>
+        <p class="footer-text">EchoMind — 让熟悉的声音，继续被听见</p>
+        <p class="footer-note">echomind2026@163.com</p>
+    </footer>
+</body>
+</html>
