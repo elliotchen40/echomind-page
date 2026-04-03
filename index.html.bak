@@ -920,7 +920,7 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <img src="logo.jpg" alt="EchoMind" class="logo-img">
+        <a href="/"><img src="logo.jpg" alt="EchoMind" class="logo-img"></a>
         <div class="lang-selector">
             <button onclick="toggleLang()" aria-label="Language">🌐</button>
             <div class="lang-dropdown" id="langDropdown">
